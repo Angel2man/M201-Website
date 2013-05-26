@@ -27,7 +27,7 @@ function db_connect() {
 
 function db_get_user_from_session_id($db, $session_id) {
     // Query
-    $result = $db->query("SELECT * FROM session, user WHERE session.id = $session_id  AND session.user_id = user.id LIMIT 1");
+    $result = $db->query("SELECT * FROM session, user WHERE session.id = $session_id AND session.user_id = user.id LIMIT 1");
     
     // Check that result is not null
     if ($result == null) {
@@ -51,21 +51,21 @@ function db_get_product_list($db, $category_id, $count, $start, $user_id) {
     // anywhere but is used as a simple way to work out if there is a next page
     $count++;
     
-    // Query
-    $sql = "SELECT * FROM product";
-    
-    // If user id is set, get basket item too
-    if ($user_id) {
-        $sql = $sql." LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id";
-    }
-    
-    // If category id is set, only lookup values with that category
-    if ($category_id) {
-        $sql = $sql." WHERE category_id=$category_id";
-    }
-    
-    // Add limit
-    $sql = $sql." LIMIT $count OFFSET $start";
+    // Build Query
+        $sql = "SELECT * FROM product";
+        
+        // If user id is set, get basket item too
+        if ($user_id) {
+            $sql = $sql." LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id";
+        }
+        
+        // If category id is set, only lookup values with that category
+        if ($category_id) {
+            $sql = $sql." WHERE category_id=$category_id";
+        }
+        
+        // Add limit
+        $sql = $sql." LIMIT $count OFFSET $start";
     
     // Run query
     $result = $db->query($sql);
