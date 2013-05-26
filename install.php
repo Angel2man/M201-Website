@@ -1,7 +1,7 @@
 <?php
 function install_db($db) {
     // Drop tables
-    // Tables are deleted in reverse order to make sure foreign key constraints are removed properly
+    // NOTE: Tables are deleted in reverse order to make sure foreign key constraints are removed properly
     $db->query("DROP TABLE IF EXISTS review");
     $db->query("DROP TABLE IF EXISTS orderitem");
     $db->query("DROP TABLE IF EXISTS basketitem");
@@ -9,18 +9,30 @@ function install_db($db) {
     $db->query("DROP TABLE IF EXISTS session");
     $db->query("DROP TABLE IF EXISTS user");
     $db->query("DROP TABLE IF EXISTS product");
+    $db->query("DROP TABLE IF EXISTS category");
+    
+    // Product table
+    $db->query("CREATE TABLE category (
+                    id        int(11)  NOT NULL  AUTO_INCREMENT,
+                    name      text     NOT NULL,
+                    position  int(11)  NOT NULL  DEFAULT 0,
+                    
+                    PRIMARY KEY (id)
+                ) ENGINE = InnoDB;");
     
     // Product table
     $db->query("CREATE TABLE product (
                     id           int(11)  NOT NULL  AUTO_INCREMENT,
                     name         text     NOT NULL,
-                    summary      text     NOT NULL,
-                    description  text     NOT NULL,
-                    price        int(11)  NOT NULL,
-                    usual_price  int(11)  NOT NULL,
-                    stock        int(11)  NOT NULL,
+                    summary      text     NOT NULL  DEFAULT '',
+                    category_id  int(11)  NOT NULL  DEFAULT 0,
+                    description  text     NOT NULL  DEFAULT '',
+                    price        int(11)  NOT NULL  DEFAULT 0,
+                    usual_price  int(11)  NOT NULL  DEFAULT 0,
+                    stock        int(11)  NOT NULL  DEFAULT 0,
                     
-                    PRIMARY KEY (id)
+                    PRIMARY KEY (id),
+                    FOREIGN KEY (category_id) REFERENCES category(id)
                 ) ENGINE = InnoDB;");
     
     // User table
