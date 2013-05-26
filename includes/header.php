@@ -45,17 +45,20 @@ function print_breadcrumb($bc) {
             
             <div id="nav">
                 <ul>
-                    <li><a href="index.php">Products</a></li>
-                    <li><a href="account.php">Account Settings</a></li>
-                    <li><a href="basket.php">Basket</a></li>
-                    <?php if ($user) { ?>
-                        <li><a href="logout.php">Logout</a></li>
-                    <?php } else { ?>
-                        <li><a href="login.php">Login</a></li>
-                    <?php } ?>
+                    <li><a href="index.php">All Products</a></li>
                 </ul>
+                <div style="clear: both;"></div>
             </div>
-            <div style"clear: both;"></div>
+            
+            <div id="user_info">
+                <?php if($user) { ?>
+                    Hi, <?php echo $user["username"]; ?>! <a href="logout.php">Logout</a><br />
+                    <a href="account.php">Account Settings</a>
+                <?php } else { ?>
+                    <a href="login.php">Login</a>
+                    <a href="register.php">Register</a>
+                <?php } ?>
+            </div>
             
             <div id="sidebar">
                <?php if (!$user) { ?>
@@ -67,9 +70,6 @@ function print_breadcrumb($bc) {
                        </div>
                    </div>
                <?php } else { ?>
-                   <div id="user_info">
-                       Hi, <?php echo $user["username"]; ?>! <a href="logout.php">Logout</a>
-                   </div>
                    <div id="basketbox" class="sidebarbox">
                        <h3>Basket</h3> 
                        
