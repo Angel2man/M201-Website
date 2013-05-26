@@ -11,21 +11,27 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
         
-        // Check credentials
-        $user_id = auth_get_user_id_from_credentials($db, $username, $password);
-        if ($user_id != null) {
-            // login user
-            $session_id = auth_login($db, $user_id, $_SERVER["REMOTE_ADDR"]);
-            if ($session_id != null) {
-                $_SESSION["session_id"] = $session_id;
-                
-                // Redirect to home page
-                header("Location: index.php");
-            } else {
-                die("Failed to create new session :'(");
-            }
-        } else {
+        // Validate username and password
+        if (validate_username($username) != null || validate_password($password, $password) != null) {
             $error = true;
+        } else {
+            // Check credentials
+            $user_id = auth_get_user_id_from_credentials($db, $username, $password);
+            if ($user_id != null) {
+                // Login user
+                $session_id = auth_login($db, $user_id, $_SERVER["REMOTE_ADDR"]);
+                if ($session_id != null) {
+                    // Set session id
+                    $_SESSION["session_id"] = $session_id;
+                    
+                    // Redirect to home page
+                    header("Location: index.php");
+                } else {
+                    die("Failed to create new session :'(");
+                }
+            } else {
+                $error = true;
+            }
         }
     }
     
