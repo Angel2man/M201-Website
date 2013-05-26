@@ -1,4 +1,4 @@
-<form action="/account.php?action=change_password" method="post">
+<form action="account.php?action=change_password" method="post">
     <div class="form">
         <div class="form_row">
             <div class="form_label">Password</div>

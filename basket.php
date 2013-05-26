@@ -30,7 +30,7 @@
                 <?php foreach ($user["basket"] as $basket_item) { ?>
                     <tr>
                         <td>
-                            <a href="/product.php?id=<?php echo $basket_item["product_id"] ?>">
+                            <a href="product.php?id=<?php echo $basket_item["product_id"] ?>">
                                 <?php echo $basket_item["name"]; ?>
                             </a>
                        </td>
@@ -44,7 +44,7 @@
                         </td>
                         <td><?php echo money_format("£%i",$basket_item["price"] * $basket_item["quantity"] / 100); ?></td>
                         <td>
-                             <form action="/basket.php?action=change_item" method="post">
+                             <form action="basket.php?action=change_item" method="post">
                                  <input type="hidden" name="product_id" value="<?php echo $basket_item["product_id"]; ?>" />
                                  <input type="hidden" name="quantity" value="0" />
                                  <input type="submit" value="Remove" />
@@ -54,7 +54,7 @@
                 <?php } ?>
             </tbody>
         </table>
-        <p><a href="/checkout.php">Checkout</a></p>
+        <p><a href="checkout.php">Checkout</a></p>
     <?php
         } else {
             // Print basket empty message
@@ -62,7 +62,7 @@
         }
     } else {
         // Print login message
-        echo "<p>You must <a href=\"/login.php\">login</a> in order to view this page</p>";
+        echo "<p>You must <a href=\"login.php\">login</a> in order to view this page</p>";
     }
     
     // Print footer

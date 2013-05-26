@@ -41,7 +41,7 @@
         }
         
         // Print product
-        echo "<li><a href=\"/product.php?id=".$product["id"]."\">".$product["name"]."</a></li>";
+        echo "<li><a href=\"product.php?id=".$product["id"]."\">".$product["name"]."</a></li>";
         
         // Increase product number
         $product_num++;
@@ -52,12 +52,12 @@
     
     // Put previous button if previous page exists
     if ($page_num > 0) {
-        echo "<a href=\"/index.php?p=".($page_num - 1)."\">&lt;&lt; previous</a>";
+        echo "<a href=\"index.php?p=".($page_num - 1)."\">&lt;&lt; previous</a>";
     }
     
     // Put next button if next page exists
     if (count($products) > $products_per_page) {
-        echo "<a href=\"/index.php?p=".($page_num + 1)."\">next &gt;&gt;</a>";
+        echo "<a href=\"index.php?p=".($page_num + 1)."\">next &gt;&gt;</a>";
     }
     
     // Print footer

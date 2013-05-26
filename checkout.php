@@ -63,11 +63,11 @@
             </tr>
         </table>
          
-        <form action="/checkout.php" method="post">
+        <form action="checkout.php" method="post">
             <input type="hidden" name="place_order" value="true" />
             <h3>Delivery address</h3>
             
-            <p><a href="/account.php?action=change_address">Click here</a> to set your default address</p>
+            <p><a href="account.php?action=change_address">Click here</a> to set your default address</p>
             
             <div class="form">
                 <div class="form_row">
@@ -130,7 +130,7 @@
         }
     } else {
         // Print login message
-        echo "<p>You must <a href=\"/login.php\">login</a> in order to view this page</p>";
+        echo "<p>You must <a href=\"login.php\">login</a> in order to view this page</p>";
     }
     
     // Print footer

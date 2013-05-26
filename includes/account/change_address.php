@@ -1,4 +1,4 @@
-<form action="/account.php?action=change_address" method="post">
+<form action="account.php?action=change_address" method="post">
     <div class="form">
         <div class="form_row">
             <div class="form_label">Name</div>

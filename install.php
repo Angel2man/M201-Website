@@ -131,7 +131,7 @@ function install_db($db) {
         // Verify password
         if ($_POST["password"] == "foobar123") {
             install_db($db);
-            die("Database installed. You can now <a href=\"load_sample_data.php\">load some sample data</a><br/><a href=\"/install.php\">Go back</a>");
+            die("Database installed. You can now <a href=\"load_sample_data.php\">load some sample data</a><br/><a href=\"install.php\">Go back</a>");
         } else {
             $pw_error = true;
         }

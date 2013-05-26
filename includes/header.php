@@ -34,7 +34,7 @@ function print_breadcrumb($bc) {
     <head>
         <meta charset="UTF-8" />
         <title><?php echo $page["title"]; ?></title>
-        <link href="/static/style.css" rel="stylesheet" type="text/css" />
+        <link href="static/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="container">
@@ -45,13 +45,13 @@ function print_breadcrumb($bc) {
             
             <div id="nav">
                 <ul>
-                    <li><a href="/index.php">Products</a></li>
-                    <li><a href="/account.php">Account Settings</a></li>
-                    <li><a href="/basket.php">Basket</a></li>
+                    <li><a href="index.php">Products</a></li>
+                    <li><a href="account.php">Account Settings</a></li>
+                    <li><a href="basket.php">Basket</a></li>
                     <?php if ($user) { ?>
-                        <li><a href="/logout.php">Logout</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     <?php } else { ?>
-                        <li><a href="/login.php">Login</a></li>
+                        <li><a href="login.php">Login</a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -68,7 +68,7 @@ function print_breadcrumb($bc) {
                    </div>
                <?php } else { ?>
                    <div id="user_info">
-                       Hi, <?php echo $user["username"]; ?>! <a href="/logout.php">Logout</a>
+                       Hi, <?php echo $user["username"]; ?>! <a href="logout.php">Logout</a>
                    </div>
                    <div id="basketbox" class="sidebarbox">
                        <h3>Basket</h3> 
@@ -83,7 +83,7 @@ function print_breadcrumb($bc) {
                            <?php } else { ?>
                                <p>Your basket is empty</p>
                            <?php } ?>
-                           <br /><sub><a href="/basket.php">View Basket</a> | <a href="/checkout.php">Checkout</a></sub>
+                           <br /><sub><a href="basket.php">View Basket</a> | <a href="checkout.php">Checkout</a></sub>
                        </div>
                    </div>
                <?php } ?>

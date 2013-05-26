@@ -33,7 +33,7 @@
         
         // Breadcrumb
         $page["breadcrumb"] = array(
-            array("Account Settings", "/account.php"),
+            array("Account Settings", "account.php"),
             array($page["title"], null)
         );
     }
@@ -67,7 +67,7 @@
         }
     } else {
         // Display login message
-        echo "<p>You must <a href=\"/login.php\">login</a> in order to view this page</p>";
+        echo "<p>You must <a href=\"login.php\">login</a> in order to view this page</p>";
     }
     
     // Print footer

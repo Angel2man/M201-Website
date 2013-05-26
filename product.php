@@ -18,7 +18,7 @@
     if ($product) {
         // Breadcrumb
         $page["breadcrumb"] = array(
-            array("Products", "/index.php"),
+            array("Products", "index.php"),
             array($product["name"], null)
         );
         
@@ -42,7 +42,7 @@
     // Check for error
     if ($error) {
         // Print error message
-        echo "<p><a href=\"/index.php\">Click here</a> to go back to the product page</p>";
+        echo "<p><a href=\"index.php\">Click here</a> to go back to the product page</p>";
     } else {
 ?>
 
@@ -55,7 +55,7 @@
         ?>
     </h4></div>
     
-    <form action="/basket.php?action=change_item" method="post">
+    <form action="basket.php?action=change_item" method="post">
         <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
         <input type="hidden" name="quantity" value="+1" />
         <input type="submit" value="Add to basket" />

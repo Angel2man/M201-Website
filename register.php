@@ -100,11 +100,11 @@
 
     <p>Thank you for registering</p>
     <p>An activation link has been emailed to you and should arrive shortly</p>
-    <p>You can <a href="/login.php">log in now</a> but you cannot place an order until your email has been verified</p>
+    <p>You can <a href="login.php">log in now</a> but you cannot place an order until your email has been verified</p>
 
 <?php } else { ?>
 
-    <form action="/register.php" method="post">
+    <form action="register.php" method="post">
         <div class="form">
             <div class="form_row">
                 <div class="form_label">Username</div>

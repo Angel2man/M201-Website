@@ -22,7 +22,7 @@ function load_sample_data($db) {
         // Verify password
         if ($_POST["password"] == "foobar123") {
             load_sample_data($db);
-            die("Data loaded. <a href=\"/load_sample_data.php\">Go back</a>");
+            die("Data loaded. <a href=\"load_sample_data.php\">Go back</a>");
         } else {
             $pw_error = true;
         }
@@ -31,7 +31,7 @@ function load_sample_data($db) {
 
 <p>Click the button below to load some sample data</p>
 
-<p>Please make sure that the database is installed first. If not, <a href="/install.php">click here</a>.</p>
+<p>Please make sure that the database is installed first. If not, <a href="install.php">click here</a>.</p>
 
 <p>The password is: foobar123</p>
 
