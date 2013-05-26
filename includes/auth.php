@@ -148,15 +148,15 @@ function auth_change_password($db, $user_id, $password) {
 }
 
 
-function auth_change_address($db, $user_id, $address1, $address2, $street, $town, $county, $postcode, $phone) {
+function auth_change_address($db, $user_id, $name, $address1, $address2, $town, $county, $postcode, $phone) {
     // Set address
     $db->query("UPDATE user SET
-                address1=\"$address1\"
-                address2=\"$address2\"
-                street=\"$street\"
-                town=\"$town\"
-                county=\"$county\"
-                postcode=\"$postcode\"
+                name=\"$name\",
+                address1=\"$address1\",
+                address2=\"$address2\",
+                town=\"$town\",
+                county=\"$county\",
+                postcode=\"$postcode\",
                 phone=\"$phone\"
                 WHERE id=$user_id");
 }

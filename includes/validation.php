@@ -1,5 +1,8 @@
 <?php
 
+// NOTE: None of these will succeed if a quote character has been used
+
+
 function validate_username($username) {
     // Check that the field has been filled in
     if ($username == null || $username == "") {
@@ -62,6 +65,79 @@ function validate_password($password1, $password2) {
     // Check that no illegal characters are being used in password
     if (preg_match("/[\"\']/", $password1)) {
         return "This password is invalid";
+    }
+    
+    // No error
+    return null;
+}
+
+function validate_address_line($line, $required) {
+    // Check that the field has been filled in
+    if ($line == null || $line == "") {
+        if ($required) {
+            return "This field is required";
+        } else {
+            return null;
+        }
+    }
+    
+    // Check that this field is not too long
+    if (strlen($line) > 200) {
+        return "This field is too long";
+    }
+    
+    // Check that no illegal characters are being used
+    if (preg_match("/[\"\']/", $line)) {
+        return "This field is invalid";
+    }
+    
+    // No error
+    return null;
+}
+
+function validate_address_postcode($postcode, $required) {
+    // Check that the field has been filled in
+    if ($postcode == null || $postcode == "") {
+        if ($required) {
+            return "Postcode is required";
+        } else {
+            return null;
+        }
+    }
+    
+    // Check that this field is not too long
+    if (strlen($postcode) > 10) {
+        return "This postcode is too long";
+    }
+    
+    // Check that the postcode is valid
+    // http://www.five-twelve.co.uk/development/full-uk-postcode-regular-expression-pattern-incl-london
+    if (preg_match("/^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$/", $postcode)) {
+        return "This postcode is invalid";
+    }
+    
+    // No error
+    return null;
+}
+
+function validate_address_phone_number($phone_number, $required) {
+    // Check that the field has been filled in
+    if ($phone_number == null || $phone_number == "") {
+        if ($required) {
+            return "Phone number is required";
+        } else {
+            return null;
+        }
+    }
+    
+    // Check that this field is not too long
+    if (strlen($phone_number) > 20) {
+        return "This phone number is too long";
+    }
+    
+    // Check that the phone number is valid
+    if (!preg_match("/^[0-9 -]$/", $phone_number)) {
+        return "This phone number is invalid";
     }
     
     // No error
