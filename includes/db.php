@@ -1,17 +1,13 @@
 <?php
 
-// Database settings
-$db_settings["host"] = "localhost";
-$db_settings["user"] = "shop2";
-$db_settings["pass"] = "W8GeeMu3vZGs2pJc";
-$db_settings["name"] = "shop2";
-
-
 function db_connect() {
     // http://www.php.net/manual/en/mysqli.quickstart.connections.php
     
-    // Get DB settings
-    $db_settings = $GLOBALS["db_settings"];
+    // Database settings
+    $db_settings["host"] = "10.0.125.28";
+    $db_settings["user"] = "shop2";
+    $db_settings["pass"] = "W8GeeMu3vZGs2pJc";
+    $db_settings["name"] = "shop2";
     
     // Setup MySQL connection
     $db = new mysqli($db_settings["host"], $db_settings["user"], $db_settings["pass"], $db_settings["name"]);
