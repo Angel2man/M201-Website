@@ -5,6 +5,7 @@
     // Includes
     require "db.php";
     require "auth.php";
+    require "validation.php";
     
     // Connect to database
     $db = db_connect();

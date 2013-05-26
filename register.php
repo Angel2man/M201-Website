@@ -24,54 +24,19 @@
         $password1 = $_POST["password1"];
         $password2 = $_POST["password2"];
         
-        // Check that all fields are set
-        if ($username == null || $username == "") {
-            $username_error = "This field is required";
-        }
-        if ($email == null || $email == "") {
-            $email_error = "This field is required";
-        }
-        if ($password1 == null || $password1 == "") {
-            $password_error = "This field is required";
-        } else {
-            if ($password2 == null || $password2 == "") {
-                $password_error = "Please repeat password";
-            }
+        // Validate input
+        $username_error = validate_username($username);
+        $email_error = validate_email_address($email);
+        $password_error = validate_password($password1, $password2);
+        
+        // Check if username is already taken
+        if ($username_error == null && auth_check_username_exist($db, $username)) {
+            $username_error = "This username is already in use";
         }
         
-        // Check that the username is valid
-        if ($username_error == null) {
-            // Must be less than 256 characters and alphanumeric (underscores allowed)
-            if (strlen($username) > 256 || !preg_match("/^[a-zA-Z0-9_]+$/", $username)) {
-                $username_error = "This username is invalid";
-            } else if (strlen($username) < 4) { // Must have 4 or more characters
-                $username_error = "This username is too short";
-            } else {
-                // Check that the username isnt already in use
-                if (auth_check_username_exist($db, $username)) {
-                    $username_error = "This username is already in use";
-                }
-            }
-        }
-        
-        // Check that the email is valid
-        if ($email_error == null) {
-            // http://php.net/manual/en/filter.examples.validation.php
-            if (strlen($email) > 256 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $email_error = "This email address is invalid";
-            } else {
-                // Check that the email address isnt already in use
-                if (auth_check_email_exist($db, $email)) {
-                    $email_error = "This email address is already in use";
-                }
-            }
-        }
-        
-        // Check that the passwords match
-        if ($password_error == null) {
-            if ($password1 != $password2) {
-                $password_error = "These passwords do not match";
-            }
+        // Check if email address is already taken
+        if ($email_error == null && auth_check_email_exist($db, $username)) {
+            $email_error = "This email address is already in use";
         }
         
         // If there are no errors, continue with registration
