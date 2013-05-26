@@ -1,16 +1,16 @@
 <?php
-function load_sample_data($db) {
-    // Load 100 products
-    for ($i = 0; $i < 100; $i++) {
-        $product_name = "Product ".($i + 1);
-        
-        $db->query("INSERT INTO product (name, summary, description, price, usual_price, stock) VALUES
-                    (\"$product_name\", \"Summary\", \"Description\", 500, 1000, 0)");
+    function load_sample_data($db) {
+        // Load 100 products
+        for ($i = 0; $i < 100; $i++) {
+            $product_name = "Product ".($i + 1);
+            
+            $db->query("INSERT INTO product (name, summary, description, price, usual_price, stock) VALUES
+                        (\"$product_name\", \"Summary\", \"Description\", 500, 1000, 0)");
+        }
     }
-}
-
-
-
+    
+    
+    
     // Load common functions
     require "includes/common.php";
     
@@ -30,11 +30,8 @@ function load_sample_data($db) {
 ?>
 
 <p>Click the button below to load some sample data</p>
-
 <p>Please make sure that the database is installed first. If not, <a href="install.php">click here</a>.</p>
-
 <p>The password is: foobar123</p>
-
 <br /><br />
 
 <?php if ($pw_error) { ?>
