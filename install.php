@@ -25,7 +25,7 @@ function install_db($db) {
                     id           int(11)  NOT NULL  AUTO_INCREMENT,
                     name         text     NOT NULL,
                     summary      text     NOT NULL  DEFAULT '',
-                    category_id  int(11)  NOT NULL  DEFAULT 0,
+                    category_id  int(11),
                     description  text     NOT NULL  DEFAULT '',
                     price        int(11)  NOT NULL  DEFAULT 0,
                     usual_price  int(11)  NOT NULL  DEFAULT 0,

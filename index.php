@@ -11,11 +11,17 @@
         $page_num = 0;
     }
     
+    // Get category id
+    $category_id = $_GET["cat"];
+    if (!is_numeric($category_id)) {
+        $category_id = null;
+    }
+    
     // Products per page
     $products_per_page = 20;
     
     // Get product list
-    $products = db_get_product_list($db, $products_per_page, $page_num * $products_per_page, $user["id"]);
+    $products = db_get_product_list($db, $category_id, $products_per_page, $page_num * $products_per_page, $user["id"]);
     
     // Set page variables
     $page["title"] = "Products";

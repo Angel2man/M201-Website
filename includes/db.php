@@ -46,19 +46,29 @@ function db_get_user_from_session_id($db, $session_id) {
     return $result->fetch_assoc();
 }
 
-function db_get_product_list($db, $count, $start, $user_id) {
+function db_get_product_list($db, $category_id, $count, $start, $user_id) {
     // Note: An extra row is fetched from the database here. This is not displayed
     // anywhere but is used as a simple way to work out if there is a next page
     $count++;
     
     // Query
-    // If user was provided, look for basket item as well
-    $result = null;
+    $sql = "SELECT * FROM product";
+    
+    // If user id is set, get basket item too
     if ($user_id) {
-    	$result = $db->query("SELECT * FROM product LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id LIMIT $count OFFSET $start");
-    } else {
-    	$result = $db->query("SELECT * FROM product LIMIT $count OFFSET $start");
+        $sql = $sql." LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id";
     }
+    
+    // If category id is set, only lookup values with that category
+    if ($category_id) {
+        $sql = $sql." WHERE category_id=$category_id";
+    }
+    
+    // Add limit
+    $sql = $sql." LIMIT $count OFFSET $start";
+    
+    // Run query
+    $result = $db->query($sql);
     
     // Check that result is not null
     if ($result == null) {
