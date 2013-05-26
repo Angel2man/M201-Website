@@ -11,7 +11,7 @@
     // Success flag
     $success = false;
     
-    // Check if were changing the password
+    // Check if were changing the address
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get field values
         $name = $_POST["name"];
