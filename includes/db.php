@@ -46,6 +46,51 @@ function db_get_user_from_session_id($db, $session_id) {
     return $result->fetch_assoc();
 }
 
+function db_get_category_list($db) {
+    // Query
+    $result = $db->query("SELECT * FROM category ORDER BY position");
+    
+    // Check that result is not null
+    if ($result == null) {
+        return null;
+    }
+    
+    // Seek first row
+    $result->data_seek(0);
+    
+    // Initialise array
+    $category_list = array();
+    
+    // Add all rows to array
+    while ($row = $result->fetch_assoc()) {
+        array_push($category_list, $row);
+    }
+    
+    // Return
+    return $category_list;
+}
+
+function db_get_category_from_id($db, $category_id) {
+    // Query
+    $result = $db->query("SELECT * FROM category WHERE id=$category_id LIMIT 1");
+    
+    // Check that result is not null
+    if ($result == null) {
+        return null;
+    }
+    
+    // Row count must be 1
+    if ($result->num_rows != 1) {
+        return null;
+    }
+    
+    // Seek to first row
+    $result->data_seek(0);
+    
+    // Return first row as associated array
+    return $result->fetch_assoc();
+}
+
 function db_get_product_list($db, $category_id, $count, $start, $user_id) {
     // Note: An extra row is fetched from the database here. This is not displayed
     // anywhere but is used as a simple way to work out if there is a next page

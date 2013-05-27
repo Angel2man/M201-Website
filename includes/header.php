@@ -46,6 +46,15 @@ function print_breadcrumb($bc) {
             <div id="nav">
                 <ul>
                     <li><a href="index.php">All Products</a></li>
+                    <?php
+                        // Get category list
+                        $category_list = db_get_category_list($db);
+                        
+                        // Print out each category in list
+                        foreach ($category_list as $category_list_item) {
+							echo "<li><a href=\"index.php?cat=".$category_list_item["id"]."\">".$category_list_item["name"]."</a></li>";
+						}
+                    ?>
                 </ul>
                 <div style="clear: both;"></div>
             </div>

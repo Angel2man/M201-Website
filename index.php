@@ -17,18 +17,28 @@
         $category_id = null;
     }
     
+    // Get category
+    $category = null;
+    if ($category_id) {
+		$category = db_get_category_from_id($db, $category_id);
+	}
+    
     // Products per page
     $products_per_page = 20;
     
     // Get product list
-    $products = db_get_product_list($db, $category_id, $products_per_page, $page_num * $products_per_page, $user["id"]);
+    $products = db_get_product_list($db, $category["id"], $products_per_page, $page_num * $products_per_page, $user["id"]);
     
     // Set page variables
-    $page["title"] = "Products";
-
-
-
-
+    if ($category ) {
+		$page["title"] = $category["name"];
+	} else {
+        $page["title"] = "All Products";
+    }
+    
+    
+    
+    
     
     // Print header
     require "includes/header.php";
