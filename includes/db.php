@@ -142,7 +142,7 @@ function db_get_product_from_id($db, $product_id, $user_id) {
     }
     
     // Return
-    return db_get_array($db, $sql);
+    return db_get_single($db, $sql);
 }
 
 
