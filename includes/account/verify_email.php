@@ -28,7 +28,7 @@
     <p>If you cannot click the link, please copy the activation code provided in the email into the box below</p>
     <form action="verify_email.php" method="get">
         <input type="text" size="32" name="key" />
-        <input type="submit" value="Activate" />
+        <input type="submit" value="Verify" />
     </form>
     
     <hr />
@@ -36,6 +36,6 @@
     <p>If you have not recieved the email, click the button below to send another email</p>
     <form action="account.php?action=verify_email" method="post">
         <input type="hidden" name="resend_verification_email" value="true" />
-        <input type="submit" value="Resend activation email" />
+        <input type="submit" value="Resend verification email" />
     </form>
 <?php } ?>
