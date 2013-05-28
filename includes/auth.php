@@ -5,28 +5,12 @@ function auth_get_user_id_from_credentials($db, $username, $password) {
     $username = strtolower($username);
     
     // Check if username is an email and query the database
-    $result = null;
+    $user = null;
     if (strpos($username, "@") != false) {
-        $result = $db->query("SELECT id, password_hash, password_salt FROM user WHERE email=\"$username\" AND closed=0 LIMIT 1");
+        $user = db_get_user_from_email($db, $username, false);
     } else {
-        $result = $db->query("SELECT id, password_hash, password_salt FROM user WHERE loginname=\"$username\" AND closed=0 LIMIT 1");
+        $user = db_get_user_from_username($db, $username, false);
     }
-    
-    // Check that result is not null
-    if ($result == null) {
-        return null;
-    }
-    
-    // Row count must be 1
-    if ($result->num_rows != 1) {
-        return null;
-    }
-    
-    // Seek to first row
-    $result->data_seek(0);
-    
-    // Get the user details
-    $user = $result->fetch_assoc();
     
     // Verify password
     if ($user["password_hash"] != crypt_get_hash($password, $user["password_salt"])) {
@@ -60,40 +44,12 @@ function auth_logout($db, $session_id) {
 
 
 function auth_check_username_exist($db, $username) {
-    // Query the database
-    $result = $db->query("SELECT id FROM user WHERE username=\"$username\" LIMIT 1");
-    
-    // Check that result is not null
-    if ($result == null) {
-        return false;
-    }
-    
-    // Row count must be 1
-    if ($result->num_rows != 1) {
-        return false;
-    }
-    
-    // Username exists
-    return true;
+    return db_get_user_from_username($db, $username, true) != null;
 }
 
 
 function auth_check_email_exist($db, $email) {
-    // Query the database
-    $result = $db->query("SELECT id FROM user WHERE email=\"$email\" LIMIT 1");
-    
-    // Check that result is not null
-    if ($result == null) {
-        return false;
-    }
-    
-    // Row count must be 1
-    if ($result->num_rows != 1) {
-        return false;
-    }
-    
-    // Email exists
-    return true;
+    return db_get_user_from_username($db, $email, true) != null;
 }
 
 

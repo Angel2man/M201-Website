@@ -24,11 +24,10 @@ function db_connect() {
     return $db;
 }
 
-
-function db_get_user_from_session_id($db, $session_id) {
-    // Query
-    $result = $db->query("SELECT * FROM session, user WHERE session.id = $session_id AND session.user_id = user.id LIMIT 1");
-    
+function db_get_single($db, $sql) {
+	// Run query
+	$result = $db->query($sql." LIMIT 1");
+	
     // Check that result is not null
     if ($result == null) {
         return null;
@@ -46,9 +45,9 @@ function db_get_user_from_session_id($db, $session_id) {
     return $result->fetch_assoc();
 }
 
-function db_get_category_list($db) {
-    // Query
-    $result = $db->query("SELECT * FROM category ORDER BY position");
+function db_get_array($db, $sql) {
+    // Run query
+    $result = $db->query($sql);
     
     // Check that result is not null
     if ($result == null) {
@@ -59,36 +58,52 @@ function db_get_category_list($db) {
     $result->data_seek(0);
     
     // Initialise array
-    $category_list = array();
+    $array = array();
     
     // Add all rows to array
     while ($row = $result->fetch_assoc()) {
-        array_push($category_list, $row);
+        array_push($array, $row);
     }
     
     // Return
-    return $category_list;
+    return $array;
+}
+
+
+function db_get_user_from_username($db, $username, $include_closed) {
+	// Convert username to lowercase
+	$username = strtolower($username);
+	
+	// Return
+	if ($include_closed) {
+		return db_get_single($db, "SELECT * FROM user WHERE loginname=\"$username\"");
+	} else {
+		return db_get_single($db, "SELECT * FROM user WHERE loginname=\"$username\" AND closed=0");
+	}
+}
+
+function db_get_user_from_email($db, $email, $include_closed) {
+	// Convert email to lowercase
+	$email = strtolower($email);
+	
+	// Return
+	if ($include_closed) {
+		return db_get_single($db, "SELECT * FROM user WHERE email=$email");
+	} else {
+		return db_get_single($db, "SELECT * FROM user WHERE email=$email AND closed=0");
+	}
+}
+
+function db_get_user_from_session_id($db, $session_id) {
+    return db_get_single($db, "SELECT * FROM session, user WHERE session.id=$session_id AND session.user_id=user.id");
+}
+
+function db_get_category_list($db) {
+    return db_get_array($db, "SELECT * FROM category ORDER BY position");
 }
 
 function db_get_category_from_id($db, $category_id) {
-    // Query
-    $result = $db->query("SELECT * FROM category WHERE id=$category_id LIMIT 1");
-    
-    // Check that result is not null
-    if ($result == null) {
-        return null;
-    }
-    
-    // Row count must be 1
-    if ($result->num_rows != 1) {
-        return null;
-    }
-    
-    // Seek to first row
-    $result->data_seek(0);
-    
-    // Return first row as associated array
-    return $result->fetch_assoc();
+    return db_get_single($db, "SELECT * FROM category WHERE id=$category_id");
 }
 
 function db_get_product_list($db, $category_id, $count, $start, $user_id) {
@@ -112,55 +127,22 @@ function db_get_product_list($db, $category_id, $count, $start, $user_id) {
         // Add limit
         $sql = $sql." LIMIT $count OFFSET $start";
     
-    // Run query
-    $result = $db->query($sql);
-    
-    // Check that result is not null
-    if ($result == null) {
-        return null;
-    }
-    
-    // Seek first row
-    $result->data_seek(0);
-    
-    // Initialise array
-    $products = array();
-    
-    // Add all rows to array
-    while ($row = $result->fetch_assoc()) {
-        // Add product
-        array_push($products, $row);
-    }
-    
-    // Return products
-    return $products;
+    // Return array
+    return db_get_array($db, $sql);
 }
 
 
 function db_get_product_from_id($db, $product_id, $user_id) {
     // If user was provided, look for basket item as well
-    $result = null;
+    $sql = null;
     if ($user_id) {
-    	$result = $db->query("SELECT * FROM product LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id WHERE product.id=$product_id LIMIT 1");
+    	$sql = "SELECT * FROM product LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id WHERE product.id=$product_id";
     } else {
-    	$result = $db->query("SELECT * FROM product WHERE id = \"$product_id\" LIMIT 1");
+    	$sql = "SELECT * FROM product WHERE id = \"$product_id\"";
     }
     
-    // Check that result is not null
-    if ($result == null) {
-        return null;
-    }
-    
-    // Row count must be 1
-    if ($result->num_rows != 1) {
-        return null;
-    }
-    
-    // Seek to first row
-    $result->data_seek(0);
-    
-    // Return first row as associated array
-    return $result->fetch_assoc();
+    // Return
+    return db_get_array($db, $sql);
 }
 
 
@@ -170,29 +152,7 @@ function db_get_reviews_from_product_id($db, $product_id) {
 
 
 function db_get_basket_from_user_id($db, $user_id) {
-    // Query
-    $result = $db->query("SELECT * FROM basketitem INNER JOIN product ON basketitem.product_id=product.id WHERE user_id=$user_id");
-    
-    // Check that result is not null
-    if ($result == null) {
-        return null;
-    }
-    
-    // Seek first row
-    $result->data_seek(0);
-    
-    // Initialise array
-    $basket = array();
-    
-    // Add all rows to array
-    while ($row = $result->fetch_assoc()) {
-        // Add basket item
-        array_push($basket, $row);
-    }
-    
-    // Return basket
-    return $basket;
+    return db_get_array($db, "SELECT * FROM basketitem INNER JOIN product ON basketitem.product_id=product.id WHERE user_id=$user_id");
 }
-
 
 ?>
