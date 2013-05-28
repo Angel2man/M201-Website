@@ -143,11 +143,14 @@ function auth_resend_verification_email($db, $user_id) {
 
 
 function auth_change_password($db, $user_id, $password) {
+    // Create a salt
+    $password_salt = crypt_new_salt();
+    
     // Get md5 hash of password
-    $password_md5 = md5($password);
+    $password_hash = crypt_get_hash($password, $password_salt);
     
     // Set password
-    $db->query("UPDATE user SET password=\"$password_md5\" WHERE id=$user_id");
+    $db->query("UPDATE user SET password_hash=\"$password_hash\", password_salt=\"$password_salt\" WHERE id=$user_id");
 }
 
 

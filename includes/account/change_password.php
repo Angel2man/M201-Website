@@ -14,7 +14,7 @@
         // If password is valid, change it
         if ($password_error == null) {
             // Change password
-            //auth_change_password($db, $user["id"], $password1);
+            auth_change_password($db, $user["id"], $password1);
             
             // Forward to account page
             forward("account.php", "Successfully changed password");

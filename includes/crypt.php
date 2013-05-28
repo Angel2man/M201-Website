@@ -1,12 +1,8 @@
 <?php
 
 function crypt_new_salt() {
-    // Create a 100 byte random string
-    // http://us.php.net/manual/en/function.mcrypt-create-iv.php
-    $random = mcrypt_create_iv(100);
-    
-    // Get an MD5 hash of it (converts to hex and truncates to 32 characters)
-    $salt = md5($random);
+    // Create a 32 digit hex number
+    $salt = md5(uniqid("SALT", true));
     
     // Return
     return $salt;
