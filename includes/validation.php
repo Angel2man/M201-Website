@@ -136,12 +136,19 @@ function validate_address_phone_number($phone_number, $required) {
     }
     
     // Check that the phone number is valid
-    if (!preg_match("/^[0-9 -]$/", $phone_number)) {
+    if (!preg_match("/^[0-9 -]*$/", $phone_number)) {
         return "This phone number is invalid";
     }
     
     // No error
     return null;
+}
+
+function validate_verification_key($key) {
+	// Verification key must be 32 characters hexadecimal
+    if (!preg_match("/^[0-9a-f]{32}$/", $key)) {
+        return "Verification key is invalid";
+    }
 }
 
 ?>

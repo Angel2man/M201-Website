@@ -1,3 +1,21 @@
+<?php
+    // Error message
+    $error = null;
+    
+    // Check if were resending a verification email
+    if ($_POST["resend_verification_email"] == "true") {
+        // Resend verification email to this user
+        auth_resend_verification_email($db, $user["id"]);
+        
+        // Set message
+        $_SESSION["message"] = "Sending another verification email";
+        
+        // Redirect to this page
+        header("Location: account.php?action=verify_email");
+    }
+?>
+
+
 <?php if ($user["email_verified"]) { ?>
    <h3>Your email has already been verified</h3>
    <p><a href="account.php">Click here</a> to go back to your account settings</p>
@@ -8,9 +26,8 @@
     <hr />
     
     <p>If you cannot click the link, please copy the activation code provided in the email into the box below</p>
-    <form action="account.php" method="get">
-        <input type="hidden" name="action" value="verify_email" />
-        <input type="text" name="key" />
+    <form action="verify_email.php" method="get">
+        <input type="text" size="32" name="key" />
         <input type="submit" value="Activate" />
     </form>
     
