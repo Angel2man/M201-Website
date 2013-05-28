@@ -11,6 +11,16 @@
         $action = null;
     }
     
+    // Check if user is not logged in
+    if (!$user) {
+        // Forward user to login page with next parameter set to this page
+        if ($action) {
+            header("Location: login.php?next=account.php%3Faction%3D".$action);
+        } else {
+            header("Location: login.php?next=account.php");
+        }
+    }
+    
     // Set page variables
     if (!$action) {
         $page["title"] = "Account Settings";
