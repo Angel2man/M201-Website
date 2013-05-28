@@ -4,6 +4,7 @@
     
     // Includes
     require "db.php";
+    require "crypt.php";
     require "auth.php";
     require "validation.php";
     

@@ -7,9 +7,9 @@ function auth_get_user_id_from_credentials($db, $username, $password) {
     // Check if username is an email and query the database
     $result = null;
     if (strpos($username, "@") != false) {
-        $result = $db->query("SELECT id, password FROM user WHERE email=\"$username\" AND closed=0 LIMIT 1");
+        $result = $db->query("SELECT id, password_hash, password_salt FROM user WHERE email=\"$username\" AND closed=0 LIMIT 1");
     } else {
-        $result = $db->query("SELECT id, password FROM user WHERE loginname=\"$username\" AND closed=0 LIMIT 1");
+        $result = $db->query("SELECT id, password_hash, password_salt FROM user WHERE loginname=\"$username\" AND closed=0 LIMIT 1");
     }
     
     // Check that result is not null
@@ -29,7 +29,7 @@ function auth_get_user_id_from_credentials($db, $username, $password) {
     $user = $result->fetch_assoc();
     
     // Verify password
-    if ($user["password"] != md5($password)) {
+    if ($user["password_hash"] != crypt_get_hash($password, $user["password_salt"])) {
         return null;
     }
     
@@ -104,14 +104,17 @@ function auth_register($db, $username, $email, $password) {
     // Make email lowercase
     $email = strtolower($email);
     
+    // Create a salt
+    $password_salt = crypt_new_salt();
+    
     // Get md5 hash of password
-    $password_md5 = md5($password);
+    $password_hash = crypt_get_hash($password, $password_salt);
     
     // Generate verification key
     $verification_key = md5(uniqid($username, true));
     
     // Create a new user
-    if($db->query("INSERT INTO user (loginname, username, email, password, email_verification_key) VALUES (\"$loginname\", \"$username\", \"$email\", \"$password_md5\", \"$verification_key\")")) {
+    if($db->query("INSERT INTO user (loginname, username, email, password_hash, password_salt, email_verification_key) VALUES (\"$loginname\", \"$username\", \"$email\", \"$password_hash\", \"$password_salt\", \"$verification_key\")")) {
         // Return new user ID
         return $db->insert_id;
     } else {
