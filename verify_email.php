@@ -17,11 +17,8 @@
         if ($error == null) {
             // Try key
             if (auth_verify_email($db, $key)) {
-                // Set message
-                $_SESSION["message"] = "Your email address has been verified";
-                
                 // Forward to home page
-                header("Location: index.php");
+                forward("index.php", "Your email address has been verified");
             } else {
                 $error = "Verification key not recognised";
             }
@@ -46,7 +43,7 @@
 
 <form action="verify_email.php" method="get">
     <input type="text" size="32" name="key" value="<?php echo $key; ?>" />
-    <input type="submit" value="Activate" />
+    <input type="submit" value="Verify" />
 </form>
 
 

@@ -21,4 +21,17 @@
             $user["basket"] = db_get_basket_from_user_id($db, $user["id"]);
         }
     }
+    
+    function forward($to, $message) {
+		// Set message
+		if ($message) {
+			$_SESSION["message"] = $message;
+		}
+		
+		// Forward
+		header("Location: ".$to);
+		
+		// Die
+		die("<p>Forwarding to <a href=\"$to\">$to</a></p>");
+	}
 ?>

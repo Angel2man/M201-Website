@@ -13,11 +13,8 @@
             auth_logout($db, $_SESSION["session_id"]);
             $_SESSION["session_id"] = null;
             
-            // Set message
-            $_SESSION["message"] = "Your account has been closed";
-            
             // Forward to home page
-            header("Location: index.php");
+            forward("index.php", "Your account has been closed");
         }
     }
 ?>

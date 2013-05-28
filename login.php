@@ -29,9 +29,9 @@
                     
                     // Redirect
                     if ($next) {
-                        header("Location: ".$next);
+                        forward($next, null);
                     } else {
-                        header("Location: index.php");
+                        forward("index.php", null);
                     }
                 } else {
                     die("Failed to create new session :'(");

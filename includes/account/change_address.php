@@ -36,11 +36,8 @@
             // Change address
             auth_change_address($db, $user["id"], $name, $address1, $address2, $town, $county, $postcode, $phone);
             
-            // Set message
-            $_SESSION["message"] = "Successfully changed address";
-            
             // Forward to account page
-            header("Location: account.php");
+            forward("account.php", "Successfully changed address");
         }
     }
 ?>

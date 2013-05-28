@@ -7,11 +7,8 @@
         // Resend verification email to this user
         auth_resend_verification_email($db, $user["id"]);
         
-        // Set message
-        $_SESSION["message"] = "Sending another verification email";
-        
-        // Redirect to this page
-        header("Location: account.php?action=verify_email");
+        // Forward to thos page
+        forward("account.php?action=verify_email", "Sending another verification email");
     }
 ?>
 

@@ -14,13 +14,10 @@
         // If password is valid, change it
         if ($password_error == null) {
             // Change password
-            auth_change_password($db, $user["id"], $password1);
-            
-            // Set message
-            $_SESSION["message"] = "Successfully changed password";
+            //auth_change_password($db, $user["id"], $password1);
             
             // Forward to account page
-            header("Location: account.php");
+            forward("account.php", "Successfully changed password");
         }
     }
 ?>
