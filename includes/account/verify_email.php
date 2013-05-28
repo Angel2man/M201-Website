@@ -1,5 +1,5 @@
 <?php if ($user["email_verified"]) { ?>
-   <h3>Your email has been verified</h3>
+   <h3>Your email has already been verified</h3>
    <p><a href="account.php">Click here</a> to go back to your account settings</p>
 <?php } else { ?>
     <h3>Your email has not been verified yet</h3>

@@ -11,6 +11,9 @@
         $_SESSION["session_id"] = null;
     }
     
+    // Set message
+    $_SESSION["message"] = "You have been logged out";
+    
     // Redirect to homepage
     header("Location: index.php");
 ?>

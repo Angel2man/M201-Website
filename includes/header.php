@@ -59,6 +59,15 @@ function print_breadcrumb($bc) {
                 <div style="clear: both;"></div>
             </div>
             
+			<?php if ($_SESSION["message"]) { ?>
+				<div id="messagebox">
+					<?php 
+						echo $_SESSION["message"];
+						$_SESSION["message"] = "";
+					?>
+				</div>
+			<?php } ?>
+            
             <div id="user_info">
                 <?php if($user) { ?>
                     Hi, <?php echo $user["username"]; ?>! <a href="logout.php">Logout</a><br />
@@ -106,7 +115,7 @@ function print_breadcrumb($bc) {
             </div>
             
             <div id="content">
-               <div id="breadcrumb">
-                   <?php if ($page["breadcrumb"]) { print_breadcrumb($page["breadcrumb"]); } ?>
-               </div>
-               <h2><?php echo $page["title"]; ?></h2> 
+                <div id="breadcrumb">
+                    <?php if ($page["breadcrumb"]) { print_breadcrumb($page["breadcrumb"]); } ?>
+                </div>
+                <h2><?php echo $page["title"]; ?></h2> 

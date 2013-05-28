@@ -107,6 +107,14 @@ body {
     padding-bottom: 10px;
 }
 
+#messagebox {
+	color: #FFF;
+	background-color: #33AA33;
+	padding: 5px;
+	font-weight: bold;
+	text-align: center;
+}
+
 #breadcrumb {
     font-size: 13px;
     padding-bottom: 10px;
