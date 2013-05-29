@@ -8,6 +8,15 @@
     $postcode_error = null;
     $phone_error = null;
     
+    // Set field values to current ones
+    $name = $user["name"];
+    $address1 = $user["address1"];
+    $address2 = $user["address2"];
+    $town = $user["town"];
+    $county = $user["county"];
+    $postcode = $user["postcode"];
+    $phone = $user["phone"];
+    
     // Check if were changing the address
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get field values
@@ -47,49 +56,49 @@
         <div class="form_row">
             <div class="form_label">Name</div>
             <div class="form_field">
-                <input type="text" name="name" value="<?php echo $user["name"]; ?>" />
+                <input type="text" name="name" value="<?php echo $name; ?>" />
                 <div class="form_error"><?php if ($name_error) { echo $name_error; } ?></div>
             </div>
         </div>
         <div class="form_row">
             <div class="form_label">Address 1</div>
             <div class="form_field">
-                <input type="text" name="address1" value="<?php echo $user["address1"]; ?>" />
+                <input type="text" name="address1" value="<?php echo $address; ?>" />
                 <div class="form_error"><?php if ($address1_error) { echo $address1_error; } ?></div>
             </div>
         </div>
         <div class="form_row">
             <div class="form_label">Address 2</div>
             <div class="form_field">
-                <input type="text" name="address2" value="<?php echo $user["address2"]; ?>" />
+                <input type="text" name="address2" value="<?php echo $address2; ?>" />
                 <div class="form_error"><?php if ($address2_error) { echo $address2_error; } ?></div>
             </div>
         </div>
         <div class="form_row">
             <div class="form_label">Town/City</div>
             <div class="form_field">
-                <input type="text" name="town" value="<?php echo $user["town"]; ?>" />
+                <input type="text" name="town" value="<?php echo $town; ?>" />
                 <div class="form_error"><?php if ($town_error) { echo $town_error; } ?></div>
             </div>
         </div>
         <div class="form_row">
             <div class="form_label">County</div>
             <div class="form_field">
-                <input type="text" name="county" value="<?php echo $user["county"]; ?>" />
+                <input type="text" name="county" value="<?php echo $county; ?>" />
                 <div class="form_error"><?php if ($county_error) { echo $county_error; } ?></div>
             </div>
         </div>
         <div class="form_row">
             <div class="form_label">Postcode</div>
             <div class="form_field">
-                <input type="text" name="postcode" value="<?php echo $user["postcode"]; ?>" />
+                <input type="text" name="postcode" value="<?php echo $postcode; ?>" />
                 <div class="form_error"><?php if ($postcode_error) { echo $postcode_error; } ?></div>
             </div>
         </div>
         <div class="form_row">
             <div class="form_label">Phone</div>
             <div class="form_field">
-                <input type="text" name="phone" value="<?php echo $user["phone"]; ?>" />
+                <input type="text" name="phone" value="<?php echo $phone; ?>" />
                 <div class="form_error"><?php if ($phone_error) { echo $phone_error; } ?></div>
             </div>
         </div>
