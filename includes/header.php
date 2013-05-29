@@ -70,8 +70,8 @@ function print_breadcrumb($bc) {
             
             <div id="user_info">
                 <?php if($user) { ?>
-                    Hi, <?php echo $user["username"]; ?>!
-                    <sup><a href="account.php">Account Settings</a> | <a href="logout.php">Logout</a></sup>
+                    <h4>Hi, <?php echo $user["username"]; ?>!<br />
+                    <sub><a href="account.php">Account Settings</a> | <a href="logout.php">Logout</a></sub></h4>
                 <?php } else { ?>
                     <a href="login.php">Login</a> | <a href="register.php">Register</a>
                 <?php } ?>
@@ -90,7 +90,7 @@ function print_breadcrumb($bc) {
                                    <?php } ?>
                                </ul>
                            <?php } else { ?>
-                               <p>Your basket is empty</p>
+                               Your basket is empty
                            <?php } ?>
                            <br /><sub><a href="basket.php">View Basket</a> | <a href="checkout.php">Checkout</a></sub>
                        </div>
