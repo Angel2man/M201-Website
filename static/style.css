@@ -1,6 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    background: #F7F7F7;
 }
 
 a:link {
@@ -23,9 +24,6 @@ a:visited {
         width: 900px;
         margin-left: auto;
         margin-right: auto;
-		border-left: 2px solid #CCC;
-		border-right: 2px solid #CCC;
-		border-bottom: 2px solid #CCC;
     }
 }
 
@@ -39,6 +37,7 @@ a:visited {
 #header h2 {
     margin: 0;
     padding-left: 10px;
+    padding-bottom: 20px;
     font-size: 15px;
     font-style: italic;
 }
@@ -54,12 +53,19 @@ a:visited {
 #nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 #nav li {
     display: block;
     float: left;
-    padding: 5px;
+    padding: 7px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#userlinks {
+	float: right;
 }
 
 #user_info {
@@ -73,36 +79,17 @@ a:visited {
 	margin: 0;
 }
 
-#sidebar {
-    clear: both;
-    float: right;
-    width: 250px;
-}
-
-
-@media screen and (max-width: 800px) {
-    #sidebar {
-        display: none;
-    }
-}
-
-.sidebarbox {
-	padding-top: 20px;
-    margin: 10px;
-}
-
-.sidebarbox_inner {
-    padding: 10px;
-}
-
-.sidebarbox h3 {
-    margin: 0;
-    padding: 5px;
-}
-
 #content {
-    margin: 10px;
-    max-width: 630px;
+    padding: 10px;
+    background-color: #FFF;
+}
+
+@media screen and (min-width: 900px) {
+    #content {
+		border-left: 2px solid #CCC;
+		border-right: 2px solid #CCC;
+		border-bottom: 2px solid #CCC;
+    }
 }
 
 #content h2 {
@@ -118,6 +105,7 @@ a:visited {
 
 #content_inner {
 	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #messagebox {
@@ -129,12 +117,16 @@ a:visited {
 }
 
 #breadcrumb {
-    font-size: 13px;
+    font-size: 15px;
     padding-bottom: 10px;
 }
 
 #footer {
     clear: both;
+    padding: 10px;
+    color: #666;
+    text-align: right;
+    font-size: 15px;
 }
 
 .form_row {
@@ -163,12 +155,11 @@ a:visited {
 #product_list {
 	list-style-type: none;
 	padding-left: 10px;
+	margin: 0;
 }
 
 #product_list li {
-	padding-top: 20px;
-	padding-bottom: 10px;
-	border-bottom: 2px solid #CCC;
+	padding-bottom: 20px;
 }
 
 .product_name {
@@ -183,5 +174,12 @@ a:visited {
 .product_price {
 	float: left;
 	width: 150px;
+}
+
+#show_more_results {
+	text-align: center;
+	padding-bottom: 20px;
+	font-size: 18px;
+	font-weight: bold;
 }
 

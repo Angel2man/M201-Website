@@ -44,7 +44,7 @@ function print_breadcrumb($bc) {
             </div>
             
             <div id="nav">
-                <ul>
+                <ul >
                     <li><a href="index.php">All Products</a></li>
                     <?php
                         // Get category list
@@ -54,8 +54,16 @@ function print_breadcrumb($bc) {
                         foreach ($category_list as $category_list_item) {
 							echo "<li><a href=\"index.php?cat=".$category_list_item["id"]."\">".$category_list_item["name"]."</a></li>";
 						}
-                    ?>
+					?>
                 </ul>
+                
+				<?php if ($user) { // If user is logged in, display user links ?>
+				    <ul id="userlinks">
+						<li><a href="javascript: void(0);">My Basket</a></li>
+						<li><a href="checkout.php">Checkout</a></li>
+					</ul>
+				<?php } ?>
+				
                 <div style="clear: both;"></div>
             </div>
             
@@ -75,34 +83,6 @@ function print_breadcrumb($bc) {
                 <?php } else { ?>
                     <a href="login.php">Login</a> | <a href="register.php">Register</a>
                 <?php } ?>
-            </div>
-            
-            <div id="sidebar">
-               <?php if ($user) { ?>
-                   <div id="basketbox" class="sidebarbox">
-                       <h3>Basket</h3> 
-                       
-                       <div class="sidebarbox_inner">
-                           <?php if ($user["basket"]) { ?>
-                               <ul>
-                                   <?php foreach ($user["basket"] as $basket_item) { ?>
-                                       <li><?php echo $basket_item["name"]; ?></li>
-                                   <?php } ?>
-                               </ul>
-                           <?php } else { ?>
-                               Your basket is empty
-                           <?php } ?>
-                           <br /><sub><a href="basket.php">View Basket</a> | <a href="checkout.php">Checkout</a></sub>
-                       </div>
-                   </div>
-               <?php } ?>
-               <div id="offersbox" class="sidebarbox">
-                   <h3>Offers</h3> 
-                   
-                   <div class="sidebarbox_inner">
-                       Offers here
-                   </div>
-               </div>
             </div>
             
             <div id="content">

@@ -61,7 +61,7 @@
 		echo "</ul>";
 		
 		// Show more results link
-		echo "<div style=\"text-align: center;\"><a>Show more results</a></div>";
+		echo "<div id=\"show_more_results\"><a>Show more results</a></div>";
 		
 		// Print footer
 		require "includes/footer.php";
