@@ -1,7 +1,7 @@
 <?php
     // Load common functions
     require "includes/common.php";
-   
+    
     // Get page number
     $page_num = $_GET["p"];
     if (!is_numeric($page_num)) {
