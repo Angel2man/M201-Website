@@ -1,18 +1,23 @@
 <?php
-	function print_stars($total, $on) {
-		// Work out how many off stars there are
-		$off = $total - $on;
-		
-		// Loop through on stars
-		for ($i = 0; $i < $on; $i++) {
-			echo "<img src=\"static/star_on.png\" alt=\"*\" />";
-		}
-		
-		// Loop through off stars
-		for ($i = 0; $i < $off; $i++) {
-			echo "<img src=\"static/star_off.png\" alt=\"-\" />";
-		}
-	}
+    // This file can be included many times in a single request
+    // Make sure that this function doesn't get defined more than once
+    if (!$print_stars_defined) {
+        function print_stars($total, $on) {
+            // Work out how many off stars there are
+            $off = $total - $on;
+            
+            // Loop through on stars
+            for ($i = 0; $i < $on; $i++) {
+                echo "<img src=\"static/star_on.png\" alt=\"*\" />";
+            }
+            
+            // Loop through off stars
+            for ($i = 0; $i < $off; $i++) {
+                echo "<img src=\"static/star_off.png\" alt=\"-\" />";
+            }
+        }
+    }
+    $print_stars_defined = true;
 ?>
 
 
