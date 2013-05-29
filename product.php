@@ -44,36 +44,39 @@
         // Print error message
         echo "<p><a href=\"index.php\">Click here</a> to go back to the product page</p>";
     } else {
-?>
-
-
-<h3 class="product_price">
-    <?php
-        echo money_format("£%i", $product["price"] / 100);
-        if ($product["price"] != $product["usual_price"]) {
-            echo " <sub style=\"text-decoration: line-through;\">".money_format("£%i", $product["usual_price"] / 100)."</sub> ";
+        // Display price and rating
+        require "includes/product/price_and_rating.php";
+        
+        // If a user is logged in
+        if ($user) { ?>
+            <form action="basket.php?action=change_item" method="post">
+                <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
+                <input type="hidden" name="quantity" value="+1" />
+                <input type="submit" value="Add to basket" />
+            </form>
+        <?php } else {
+            echo "<h4>Please <a href=\"login.php?next=product.php?id=".$product["id"]."\">login</a> to add this item to your basket</h4>";
         }
-    ?>
-</h3>
-
-<h3 class="product_rating"><?php print_stars(5, 3); ?> <sup>(<a href="product.php?id=<?php echo $product["id"]; ?>#ratings">0</a>)</sup></h3>
-
-<div style="clear: left;"></div>
-
-    
-    <form action="basket.php?action=change_item" method="post">
-        <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
-        <input type="hidden" name="quantity" value="+1" />
-        <input type="submit" value="Add to basket" />
-    </form>
-    
-    <h3 style="clear: left; padding-top: 20px;">Product description</h3>
-    <p><?php echo $product["description"]; ?></p>
-    
-    <h3>Reviews and comments</h3>
-    
-    
-<?php
+        
+        // Description
+        echo "<h3 style=\"clear: left; padding-top: 40px;\">Product description</h3>";
+        echo "<p>".$product["description"]."</p>";
+        
+        // Reviews
+        echo "<h3 style=\"padding-top: 40px;\">Reviews</h3>";
+        echo "<p>No reviews</p>";
+        
+        // Leave a review
+        echo "<h4 style=\"padding-top: 20px;\">Leave a review</h4>";
+        
+        // If user is logged in
+        if ($user) {
+            // Display review form
+            require "includes/product/review_form.php";
+        } else {
+            // Display login message
+            echo "<h4>Please <a href=\"login.php?next=product.php?id=".$product["id"]."\">login</a> to leave a review</h4>";
+        }
     }
     
     // Print footer

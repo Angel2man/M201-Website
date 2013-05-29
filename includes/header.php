@@ -78,15 +78,7 @@ function print_breadcrumb($bc) {
             </div>
             
             <div id="sidebar">
-               <?php if (!$user) { ?>
-                   <div id="loginbox" class="sidebarbox">
-                       <h3>Login</h3> 
-                       
-                       <div class="sidebarbox_inner">
-                           Login form here
-                       </div>
-                   </div>
-               <?php } else { ?>
+               <?php if ($user) { ?>
                    <div id="basketbox" class="sidebarbox">
                        <h3>Basket</h3> 
                        
