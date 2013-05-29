@@ -79,8 +79,49 @@ a:visited {
     }
 }
 
+#sidebar {
+    clear: both;
+    float: right;
+    width: 250px;
+}
+
+
+@media screen and (max-width: 800px) {
+    #sidebar {
+        display: none;
+    }
+}
+
+.sidebarbox {
+    border: 1px solid #333;
+    margin: 10px;
+}
+
+.sidebarbox_inner {
+    padding: 10px;
+}
+
+.sidebarbox h3 {
+    margin: 0;
+    padding: 5px;
+    font-size: 17px;
+    background: #333;
+    color: #FFF;
+}
+
 #content {
     margin: 10px;
+    width: -webkit-calc(100% - 270px);
+    width: -moz-calc(100% - 270px);
+    width: calc(100% - 270px);
+}
+
+@media screen and (max-width: 800px) {
+    #content {
+		width: -webkit-calc(100% - 30px);
+		width: -moz-calc(100% - 30px);
+		width: calc(100% - 30px);
+    }
 }
 
 #content h2 {
