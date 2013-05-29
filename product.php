@@ -47,11 +47,12 @@
 ?>
 
     
-    <div style="float: left; padding-right: 20px;"><h4>
-        <?php if ($product["price"] != $product["usual_price"]) {
-            echo "<sub style=\"text-decoration: line-through;\">".money_format("£%i", $product["usual_price"] / 100)."</sub> ";
-        }
-        echo money_format("£%i", $product["price"] / 100);
+    <div style="float: left; padding-right: 20px;"><h4>Price:
+        <?php
+            if ($product["price"] != $product["usual_price"]) {
+                echo "<sub style=\"text-decoration: line-through;\">".money_format("£%i", $product["usual_price"] / 100)."</sub> ";
+            }
+            echo money_format("£%i", $product["price"] / 100);
         ?>
     </h4></div>
     

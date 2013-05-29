@@ -61,6 +61,13 @@ body {
     float: right;
     padding-right: 30px;
     padding-top: 10px;
+    text-align: right;
+}
+
+@media screen and (max-width: 400px) {
+    #user_info {
+        float: none;
+    }
 }
 
 #sidebar {
@@ -95,11 +102,23 @@ body {
 
 #content {
     margin: 10px;
+    width: -webkit-calc(100% - 270px);
+    width: -moz-calc(100% - 270px);
+    width: calc(100% - 270px);
+}
+
+@media screen and (max-width: 800px) {
+    #content {
+		width: -webkit-calc(100% - 30px);
+		width: -moz-calc(100% - 30px);
+		width: calc(100% - 30px);
+    }
 }
 
 #content h2 {
     margin: 0;
     padding-bottom: 20px;
+    white-space: nowrap;
 }
 
 #content h3, #content h4 {
@@ -143,5 +162,26 @@ body {
     color: #F00;
     font-weight: bold;
     font-size: 15px;
+}
+
+
+
+#product_list {
+	list-style-type: none;
+	padding-left: 10px;
+}
+
+#product_list li {
+	padding-bottom: 20px;
+}
+
+.product_summary {
+	margin-top: 0px;
+	padding-left: 10px;
+}
+
+.product_price {
+	float: left;
+	width: 150px;
 }
 
