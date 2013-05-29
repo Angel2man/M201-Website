@@ -59,10 +59,12 @@
         
         ?>
 			<li>
-				<h3>
+				<h3 class="product_name">
 					<a href="product.php?id=<?php echo $product["id"]; ?>"><?php echo $product["name"]; ?></a>
 				</h3>
+				
 				<p class="product_summary"><?php echo $product["summary"]; ?></p>
+				
 				<h3 class="product_price">
 					<?php
 						echo money_format("£%i", $product["price"] / 100);
@@ -72,7 +74,7 @@
 					?>
 				</h3>
 				
-				<h3 class="product_rating"><?php print_stars(5, 3); ?></h3>
+				<h3 class="product_rating"><?php print_stars(5, 3); ?> <sup>(<a href="product.php?id=<?php echo $product["id"]; ?>#ratings">0</a>)</sup></h3>
 				
 				<div style="clear: left;"></div>
 				

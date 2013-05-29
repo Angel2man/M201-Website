@@ -3,6 +3,15 @@ body {
     background: #DDD;
 }
 
+a:link {
+	color: #04F;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #04f;
+}
+
 #container {
     width: 100%;
     border: 1px solid #333;
@@ -173,6 +182,10 @@ body {
 
 #product_list li {
 	padding-bottom: 20px;
+}
+
+.product_name {
+	font-weight: normal;
 }
 
 .product_summary {
