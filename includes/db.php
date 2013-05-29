@@ -107,10 +107,6 @@ function db_get_category_from_id($db, $category_id) {
 }
 
 function db_get_product_list($db, $category_id, $count, $start, $user_id) {
-    // Note: An extra row is fetched from the database here. This is not displayed
-    // anywhere but is used as a simple way to work out if there is a next page
-    $count++;
-    
     // Build Query
         $sql = "SELECT * FROM product";
         
