@@ -70,11 +70,10 @@ function print_breadcrumb($bc) {
             
             <div id="user_info">
                 <?php if($user) { ?>
-                    Hi, <?php echo $user["username"]; ?>! <a href="logout.php">Logout</a><br />
-                    <a href="account.php">Account Settings</a>
+                    Hi, <?php echo $user["username"]; ?>!
+                    <sup><a href="account.php">Account Settings</a> | <a href="logout.php">Logout</a></sup>
                 <?php } else { ?>
-                    <a href="login.php">Login</a>
-                    <a href="register.php">Register</a>
+                    <a href="login.php">Login</a> | <a href="register.php">Register</a>
                 <?php } ?>
             </div>
             
@@ -82,4 +81,6 @@ function print_breadcrumb($bc) {
                 <div id="breadcrumb">
                     <?php if ($page["breadcrumb"]) { print_breadcrumb($page["breadcrumb"]); } ?>
                 </div>
-                <h2><?php echo $page["title"]; ?></h2> 
+                <h2><?php echo $page["title"]; ?></h2>
+                
+                <div id="content_inner">

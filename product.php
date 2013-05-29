@@ -46,15 +46,20 @@
     } else {
 ?>
 
-    
-    <div style="float: left; padding-right: 20px;"><h4>Price:
-        <?php
-            if ($product["price"] != $product["usual_price"]) {
-                echo "<sub style=\"text-decoration: line-through;\">".money_format("£%i", $product["usual_price"] / 100)."</sub> ";
-            }
-            echo money_format("£%i", $product["price"] / 100);
-        ?>
-    </h4></div>
+
+<h3 class="product_price">
+    <?php
+        echo money_format("£%i", $product["price"] / 100);
+        if ($product["price"] != $product["usual_price"]) {
+            echo " <sub style=\"text-decoration: line-through;\">".money_format("£%i", $product["usual_price"] / 100)."</sub> ";
+        }
+    ?>
+</h3>
+
+<h3 class="product_rating"><?php print_stars(5, 3); ?> <sup>(<a href="product.php?id=<?php echo $product["id"]; ?>#ratings">0</a>)</sup></h3>
+
+<div style="clear: left;"></div>
+
     
     <form action="basket.php?action=change_item" method="post">
         <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />

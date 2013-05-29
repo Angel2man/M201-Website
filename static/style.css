@@ -94,6 +94,10 @@ a:visited {
     padding-bottom: 10px;
 }
 
+#content_inner {
+	padding-left: 10px;
+}
+
 #messagebox {
 	color: #FFF;
 	background-color: #33AA33;

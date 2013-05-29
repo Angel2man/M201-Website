@@ -63,9 +63,11 @@
 
 <?php if ($successful) { ?>
 
-    <p>Thank you for registering</p>
+    <h3>Thank you for registering!</h3>
     <p>An activation link has been emailed to you and should arrive shortly</p>
-    <p>You can <a href="login.php">log in now</a> but you cannot place an order until your email has been verified</p>
+    <p>You can now login but you cannot place an order until your email has been verified</p>
+    
+    <h3><a href="login.php">Click here to login</a></h3>
 
 <?php } else { ?>
 
