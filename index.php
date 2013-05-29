@@ -47,6 +47,7 @@
     echo "<ul id=\"product_list\">";
     
     // Keep track of product number so we dont accidentally print any more products
+    // This is because the get product list function will sometimes return an extra product
     $product_num = 1;
     
     // Loop through products
@@ -71,11 +72,7 @@
 					?>
 				</h3>
 				
-				<form action="basket.php?action=change_item" method="post">
-					<input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
-					<input type="hidden" name="quantity" value="+1" />
-					<input type="submit" value="Add to basket" />
-				</form>
+				<h3 class="product_rating"><?php print_stars(5, 3); ?></h3>
 				
 				<div style="clear: left;"></div>
 				

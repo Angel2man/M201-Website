@@ -34,4 +34,19 @@
 		// Die
 		die("<p>Forwarding to <a href=\"$to\">$to</a></p>");
 	}
+	
+	function print_stars($total, $on) {
+		// Work out how many off stars there are
+		$off = $total - $on;
+		
+		// Loop through on stars
+		for ($i = 0; $i < $on; $i++) {
+			echo "<img src=\"static/star_on.png\" alt=\"*\" />";
+		}
+		
+		// Loop through off stars
+		for ($i = 0; $i < $off; $i++) {
+			echo "<img src=\"static/star_off.png\" alt=\"-\" />";
+		}
+	}
 ?>
