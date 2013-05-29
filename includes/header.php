@@ -78,42 +78,6 @@ function print_breadcrumb($bc) {
                 <?php } ?>
             </div>
             
-            <div id="sidebar">
-               <?php if (!$user) { ?>
-                   <div id="loginbox" class="sidebarbox">
-                       <h3>Login</h3> 
-                       
-                       <div class="sidebarbox_inner">
-                           Login form here
-                       </div>
-                   </div>
-               <?php } else { ?>
-                   <div id="basketbox" class="sidebarbox">
-                       <h3>Basket</h3> 
-                       
-                       <div class="sidebarbox_inner">
-                           <?php if ($user["basket"]) { ?>
-                               <ul>
-                                   <?php foreach ($user["basket"] as $basket_item) { ?>
-                                       <li><?php echo $basket_item["name"]; ?></li>
-                                   <?php } ?>
-                               </ul>
-                           <?php } else { ?>
-                               <p>Your basket is empty</p>
-                           <?php } ?>
-                           <br /><sub><a href="basket.php">View Basket</a> | <a href="checkout.php">Checkout</a></sub>
-                       </div>
-                   </div>
-               <?php } ?>
-               <div id="offersbox" class="sidebarbox">
-                   <h3>Offers</h3> 
-                   
-                   <div class="sidebarbox_inner">
-                       Offers here
-                   </div>
-               </div>
-            </div>
-            
             <div id="content">
                 <div id="breadcrumb">
                     <?php if ($page["breadcrumb"]) { print_breadcrumb($page["breadcrumb"]); } ?>
