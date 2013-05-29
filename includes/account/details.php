@@ -9,7 +9,7 @@
     <div class="form_row">
         <div class="form_label">Email</div>
         <div class="form_field">
-            <?php echo $user["email"]; ?> <sub>(<?php if (!$user["email_verified"]) { echo "Not "; } ?> Verified)</sub>
+            <?php echo $user["email"]; ?> <sub>(<?php if (!$user["email_verified"]) { echo "Not "; } ?>Verified)</sub>
             <?php if (!$user["email_verified"]) { ?><br /><sub><a href="account.php?action=verify_email">Verify my email address</a></sub><?php } ?>
         </div>
     </div>
