@@ -34,4 +34,4 @@
     </div>
 </div>
 <h3 style="padding-top: 20px;">Close account</h3>
-<a href="account.php?action=close_account">Close account</a></p>
+<a href="account.php?action=close_account">Close account</a>
