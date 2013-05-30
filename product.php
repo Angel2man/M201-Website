@@ -56,8 +56,6 @@
         </h3>
 
         <h3 class="product_rating"><?php print_stars(5, 3); ?> <sup>(<a href="product.php?id=<?php echo $product["id"]; ?>#reviews">0</a>)</sup></h3>
-        
-        <?php if ($product["quantity"]) { ?><h3 class="product_in_basket">In basket</h3><?php } ?><br />
 
         <?php
             // If a user is logged in
@@ -66,7 +64,7 @@
                     <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
                     <input type="hidden" name="quantity" value="+1" />
                     <input type="submit" value="Add to basket" />
-                </form>
+                </form><h3 class="product_in_basket"><sub><?php if ($product["quantity"]) { ?>In basket<?php } ?></sub></h3>
             <?php } else {
                 echo "<h4 class=\"product_add_to_basket\">Please <a href=\"login.php?next=product.php?id=".$product["id"]."\">login</a> to add this item to your basket</h4>";
             }

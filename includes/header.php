@@ -59,7 +59,7 @@ function print_breadcrumb($bc) {
                 
 				<?php if ($user) { // If user is logged in, display user links ?>
 				    <ul id="userlinks">
-						<li><a href="javascript: void(0);">My Basket</a></li>
+						<li><a href="basket.php">My Basket</a></li>
 						<li><a href="checkout.php">Checkout</a></li>
 					</ul>
 				<?php } ?>

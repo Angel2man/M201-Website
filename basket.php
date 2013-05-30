@@ -15,7 +15,7 @@
 <?php require "includes/header.php" ?>
 
 <?php if ($user["basket"]) { ?>
-<table style="width: 500px; padding-bottom: 50px; text-align: center; border-spacing: 10px;">
+<table style="padding-bottom: 50px; text-align: center; border-spacing: 10px;">
 	<thead>
 	   <tr>
 		   <th>Product</th>
@@ -35,10 +35,19 @@
 			   </td>
 				<td><?php echo money_format("£%i", $basket_item["price"] / 100); ?></td>
 				<td>
-					<form action="/basket.php?action=change_item" method="post">
+					<form action="basket.php?action=change_item" method="post">
 						 <input type="hidden" name="product_id" value="<?php echo $basket_item["product_id"]; ?>" />
-						 <input type="number" min="0" max="99" size="2" name="quantity" value="<?php echo $basket_item["quantity"]; ?>" />
-						 <input type="submit" value="Update" />
+						 <select name="quantity" onchange="this.form.submit();">
+							<?php
+								for ($i = 0; $i <= 100; $i++) {
+									$extra = "";
+									if ($i == $basket_item["quantity"]) {
+										$extra = " selected";
+									}
+									echo "<option value=\"$i\"".$extra.">$i</option>";
+								}
+							?>
+						 </select>
 					 </form>
 				</td>
 				<td><?php echo money_format("£%i",$basket_item["price"] * $basket_item["quantity"] / 100); ?></td>
@@ -54,7 +63,7 @@
 	</tbody>
 </table>
 
-<p><a href="checkout.php">Checkout</a></p>
+<h3><a href="checkout.php">Checkout</a></h3>
 
 <?php
 	} else {
