@@ -51,7 +51,7 @@
             <img src="media/product_images/<?php echo $product["image"]?>" alt="Product Image" />
         </div>
         
-        <h3 class="product_price">
+        <h3 class="product_page_price">
             <?php print_price($product["price"], $product["usual_price"]); ?>
         </h3>
 

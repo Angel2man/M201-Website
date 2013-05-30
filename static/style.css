@@ -216,9 +216,15 @@ a:visited {
 	padding-left: 30px;
 }
 
-.product_price sub {
+.product_page_price {
+	width: 150px;
+	padding-left: 130px;
+}
+
+.product_price sub, .product_page_price sub {
 	text-decoration: line-through;
 }
+
 .product_in_basket {
 	color: #009900;
 }
