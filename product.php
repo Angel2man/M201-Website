@@ -55,8 +55,6 @@
             <?php print_price($product["price"], $product["usual_price"]); ?>
         </h3>
 
-        <h3 class="product_rating"><?php print_stars(5, 3); ?> <sup>(<a href="product.php?id=<?php echo $product["id"]; ?>#reviews">0</a>)</sup></h3>
-
         <?php
             // If a user is logged in
             if ($user) { ?>
@@ -72,20 +70,8 @@
         
         <h3 style="clear: left; padding-top: 40px;">Product description</h3>
         <p><?php echo $product["description"]; ?></p>
-        <h3 style="padding-top: 40px;">Reviews</h3>
-        <p>No reviews</p>
         
-        <h3 style="padding-top: 20px;">Leave a review</h3>
-        
-        <?php
-        // If user is logged in
-        if ($user) {
-            // Display review form
-            require "includes/product/review_form.php";
-        } else {
-            // Display login message
-            echo "<h4>Please <a href=\"login.php?next=product.php?id=".$product["id"]."\">login</a> to leave a review</h4>";
-        }
+<?php
     }
     
     // Print footer

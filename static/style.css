@@ -219,12 +219,6 @@ a:visited {
 .product_price sub {
 	text-decoration: line-through;
 }
-
-.product_rating {
-	float: left;
-	width: 200px;
-}
-
 .product_in_basket {
 	color: #009900;
 }

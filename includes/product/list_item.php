@@ -13,8 +13,6 @@
         <?php print_price($product["price"], $product["usual_price"]); ?>
     </h3>
 
-    <h3 class="product_rating"><?php print_stars(5, 3); ?> <sup>(<a href="product.php?id=<?php echo $product["id"]; ?>#reviews">0</a>)</sup></h3>
-    
     <?php
         // If a user is logged in
         if ($user) { ?>

@@ -2,7 +2,6 @@
     function install_db($db) {
         // Drop tables
         // NOTE: Tables are deleted in reverse order to make sure foreign key constraints are removed properly
-        $db->query("DROP TABLE IF EXISTS review");
         $db->query("DROP TABLE IF EXISTS orderitem");
         $db->query("DROP TABLE IF EXISTS basketitem");
         $db->query("DROP TABLE IF EXISTS shoporder");
@@ -117,17 +116,6 @@
                         FOREIGN KEY (product_id) REFERENCES product(id)
                     ) ENGINE = InnoDB;");
         
-        // Review table
-        $db->query("CREATE TABLE review (
-                        product_id  int(11)   NOT NULL,
-                        user_id     int(11)   NOT NULL,
-                        rating      int(11)   NOT NULL,
-                        comment     text      NOT NULL,
-                        post_date   datetime  NOT NULL,
-                        
-                        PRIMARY KEY (product_id, user_id),
-                        FOREIGN KEY (user_id) REFERENCES user(id)
-                    ) ENGINE = InnoDB;");
     }
     
     
