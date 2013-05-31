@@ -1,6 +1,6 @@
 <li>
     <div  class="product_image">
-        <img src="media/product_images/<?php echo $product["image"]; ?>" alt="Product Image" />
+        <img src="media/product_images/thumbnails/<?php echo $product["image"]; ?>" alt="Product Image" />
     </div>
     
     <h3 class="product_name">

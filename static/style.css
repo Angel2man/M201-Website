@@ -186,18 +186,11 @@ a:visited {
 	max-height: 100px;
 }
 
-.product_page_image {
+.productpage_image img {
 	float: left;
-	width: 100px;
-	height: 100px;
-	margin: 0;
-	padding: 0;
-	text-align: right;
-}
-
-.product_page_image img {
-	max-width: 100px;
-	max-height: 100px;
+    padding-right: 10px;
+	max-width: 200px;
+	max-height: 200px;
 }
 
 .product_name {
@@ -216,12 +209,12 @@ a:visited {
 	padding-left: 30px;
 }
 
-.product_page_price {
-	width: 150px;
+.productpage_price {
 	padding-left: 130px;
+    font-size: 23px;
 }
 
-.product_price sub, .product_page_price sub {
+.product_price sub, .productpage_price sub {
 	text-decoration: line-through;
 }
 

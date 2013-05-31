@@ -47,11 +47,11 @@
         // Product image, price and rating\
         ?>
         
-        <div class="product_image">
+        <div class="productpage_image">
             <img src="media/product_images/<?php echo $product["image"]?>" alt="Product Image" />
         </div>
         
-        <h3 class="product_page_price">
+        <h3 class="productpage_price">
             <?php print_price($product["price"], $product["usual_price"]); ?>
         </h3>
 
