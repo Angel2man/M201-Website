@@ -7,7 +7,7 @@
         // Resend verification email to this user
         auth_resend_verification_email($db, $user["id"]);
         
-        // Forward to thos page
+        // Forward to this page
         forward("account.php?action=verify_email", "Sending another verification email");
     }
 ?>

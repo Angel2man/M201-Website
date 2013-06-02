@@ -26,7 +26,7 @@
         if ($basket) {
     ?>
         <h3>Items</h3>
-        <table style="width: 500px; padding-bottom: 50px; text-align: center; border-spacing: 10px;">
+        <table style="padding-bottom: 50px; text-align: center; border-spacing: 10px;">
             <thead>
                <tr>
                    <th>Product</th>
