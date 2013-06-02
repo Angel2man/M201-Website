@@ -70,7 +70,8 @@ function auth_register($db, $username, $email, $password) {
     $verification_key = md5(uniqid($username, true));
     
     // Create a new user
-    if($db->query("INSERT INTO user (loginname, username, email, password_hash, password_salt, email_verification_key) VALUES (\"$loginname\", \"$username\", \"$email\", \"$password_hash\", \"$password_salt\", \"$verification_key\")")) {
+    if($db->query("INSERT INTO user (loginname, username, email, password_hash, password_salt, email_verification_key) VALUES
+                   (\"$loginname\", \"$username\", \"$email\", \"$password_hash\", \"$password_salt\", \"$verification_key\")")) {
         // Return new user ID
         return $db->insert_id;
     } else {

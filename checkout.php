@@ -108,7 +108,7 @@
                 <div class="form_row">
                     <div class="form_label">Postcode</div>
                     <div class="form_field">
-                        <input type="text" name="postcode" value="<?php echo $user["postcode"]; ?>" />
+                        <input type="text" name="postcode" value="<?php echo $user["postcode"]; ?>" /><sub>Don't forget the space!</sub>
                         <div class="form_error"><?php if ($postcode_error) { echo $postcode_error; } ?></div>
                     </div>
                 </div>

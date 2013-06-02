@@ -2,6 +2,8 @@
 
 function crypt_new_salt() {
     // Create a 32 digit hex number
+    // I added a prefix called "SALT" to make this number less likely
+    // to be the same as the one used in the verification key
     $salt = md5(uniqid("SALT", true));
     
     // Return

@@ -28,6 +28,9 @@
         $postcode = $_POST["postcode"];
         $phone = $_POST["phone"];
         
+        // Postcode must be uppercase
+        $postcode = strtoupper($postcode);
+        
         // Validate
         $name_error = validate_address_line($name, false);
         $address1_error = validate_address_line($address1, false);
@@ -91,7 +94,7 @@
         <div class="form_row">
             <div class="form_label">Postcode</div>
             <div class="form_field">
-                <input type="text" name="postcode" value="<?php echo $postcode; ?>" />
+                <input type="text" name="postcode" value="<?php echo $postcode; ?>" /><sub>Don't forget the space!</sub>
                 <div class="form_error"><?php if ($postcode_error) { echo $postcode_error; } ?></div>
             </div>
         </div>

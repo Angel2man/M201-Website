@@ -127,7 +127,6 @@ function db_get_product_list($db, $category_id, $count, $start, $user_id) {
     return db_get_array($db, $sql);
 }
 
-
 function db_get_product_from_id($db, $product_id, $user_id) {
     // If user was provided, look for basket item as well
     $sql = null;
@@ -140,12 +139,6 @@ function db_get_product_from_id($db, $product_id, $user_id) {
     // Return
     return db_get_single($db, $sql);
 }
-
-
-function db_get_reviews_from_product_id($db, $product_id) {
-    return array();
-}
-
 
 function db_get_basket_from_user_id($db, $user_id) {
     return db_get_array($db, "SELECT * FROM basketitem INNER JOIN product ON basketitem.product_id=product.id WHERE user_id=$user_id");

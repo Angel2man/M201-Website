@@ -1,6 +1,7 @@
 <?php
     function add_product($db, $name, $summary, $description, $image, $category_id, $usual_price, $price) {
-        $db->query("INSERT INTO product (name, summary, description, image, category_id, usual_price, price) VALUES (\"$name\", \"$summary\", \"$description\", \"$image\", $category_id, $usual_price, $price)");
+        $db->query("INSERT INTO product (name, summary, description, image, category_id, usual_price, price) VALUES
+                    (\"$name\", \"$summary\", \"$description\", \"$image\", $category_id, $usual_price, $price)");
 	}
     
     function add_category($db, $name, $position) {

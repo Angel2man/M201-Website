@@ -111,8 +111,9 @@ function validate_address_postcode($postcode, $required) {
     }
     
     // Check that the postcode is valid
-    // http://www.five-twelve.co.uk/development/full-uk-postcode-regular-expression-pattern-incl-london
-    if (preg_match("/^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$/", $postcode)) {
+    // I got this regex from http://stackoverflow.com/questions/164979/uk-postcode-regex-comprehensive
+    // I had to do some modifications to make it work though
+    if (!preg_match("/^(GIR 0AA)|(((ABCDEFGHIJKLMNOPRSTWYZ][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][0-9]?)|((ABCDEFGHIJKLMNOPRSTWYZ][0-9][A-HJKSTUW])|([ABCDEFGHIJKLMNOPRSTWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][ABEHMNPRVWXY])))) [0-9][ABDEFGHJLNPQRSTUWXYZ]{2})$/", $postcode)) {
         return "This postcode is invalid";
     }
     
