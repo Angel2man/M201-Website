@@ -60,7 +60,7 @@
             if ($user) { ?>
                 <form class="product_add_to_basket" action="basket.php?action=change_item" method="post">
                     <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
-                    <input type="hidden" name="quantity" value="+1" />
+                    <input type="hidden" name="quantity" value="<?php if ($product["quantity"]) { echo $product["quantity"] + 1; } else { echo 1; } ?>" />
                     <input type="submit" value="Add to basket" />
                 </form><h3 class="product_in_basket"><sub><?php if ($product["quantity"]) { ?>In basket<?php } ?></sub></h3>
             <?php } else {

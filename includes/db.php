@@ -151,4 +151,14 @@ function db_get_basket_from_user_id($db, $user_id) {
     return db_get_array($db, "SELECT * FROM basketitem INNER JOIN product ON basketitem.product_id=product.id WHERE user_id=$user_id");
 }
 
+function db_set_basket_item($db, $user_id, $product_id, $quantity) {
+    // If quantity is 0, delete the basket item
+    if ($quantity == 0) {
+        $db->query("DELETE FROM basketitem WHERE user_id=$user_id AND product_id=$product_id");
+    } else {
+        $db->query("INSERT INTO basketitem (user_id, product_id, quantity) VALUES ($user_id, $product_id, $quantity)
+                    ON DUPLICATE KEY UPDATE quantity=$quantity");
+    }
+}
+
 ?>
