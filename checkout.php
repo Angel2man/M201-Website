@@ -45,6 +45,13 @@
                         <td><?php echo money_format("£%i", $basket_item["price"] * $basket_item["quantity"] / 100); ?></td>
                     </tr>
                 <?php } ?>
+                <tr>
+                    <?php $total_value += 500; ?>
+                    <td>Shipping</td>
+                    <td>£5</td>
+                    <td>1</td>
+                    <td>£5</td>
+                </tr>
             </tbody>
         </table>
        
