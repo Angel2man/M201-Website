@@ -65,18 +65,36 @@
                 <p class="product_summary"><?php echo $product["summary"]; ?></p>
                 
                 <h3 class="product_price">
-                    <?php print_price($product["price"], $product["usual_price"]); ?>
+                    <?php print_price($product["price"], $product["usual_price"], $product["stock"]); ?>
+                </h3>
+                
+                <h3 class="product_stock">
+                    <?php
+                        $stock = $product["stock"];
+                        if ($stock == 0) {
+                            echo " <span class=\"bad_text\">Not in stock</span>";
+                        } else if ($stock < 50) {
+                            echo " <span class=\"good_text\">$stock in stock</span>"; 
+                        } else if ($stock >= 50) {
+                            echo " <span class=\"good_text\">50+ in stock</span>"; 
+                        }
+                    ?>
                 </h3>
                 
                 <?php
-                    // If a user is logged in
-                    if ($user) { ?>
-                        <form class="product_add_to_basket" action="basket.php?action=change_item" method="post">
-                            <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
-                            <input type="hidden" name="quantity" value="<?php if ($product["quantity"]) { echo $product["quantity"] + 1; } else { echo 1; } ?>" />
-                            <input type="submit" value="Add to basket" />
-                        </form><h3 class="product_in_basket"><sub><?php if ($product["quantity"]) { ?>In basket<?php } ?></sub></h3>
-                    <?php }
+                    // If a user is logged in and product is in stock
+                    if ($user && $product["stock"] > 0) { 
+                        // Check if this product is already in the users basket
+                        if ($product["quantity"]) { ?>
+                            <h3><a href="basket.php">In basket</a></h3>
+                        <?php } else { ?>
+                            <form class="product_add_to_basket" action="basket.php?action=change_item" method="post">
+                                <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
+                                <input type="hidden" name="quantity" value="<?php if ($product["quantity"]) { echo $product["quantity"] + 1; } else { echo 1; } ?>" />
+                                <input type="submit" value="Add to basket" />
+                            </form>
+                        <?php }
+                    }
                 ?>
                 
                 <div style="clear: left;"></div>

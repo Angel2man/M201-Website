@@ -54,16 +54,32 @@
         <h3 class="productpage_price">
             <?php print_price($product["price"], $product["usual_price"]); ?>
         </h3>
+        
+        <h3 class="productpage_stock">
+            <?php
+                $stock = $product["stock"];
+                if ($stock == 0) {
+                    echo " <span class=\"bad_text\">Not in stock</span>";
+                } else if ($stock < 50) {
+                    echo " <span class=\"good_text\">$stock in stock</span>"; 
+                } else if ($stock >= 50) {
+                    echo " <span class=\"good_text\">50+ in stock</span>"; 
+                }
+            ?>
+        </h3>
 
         <?php
             // If a user is logged in
-            if ($user) { ?>
-                <form class="product_add_to_basket" action="basket.php?action=change_item" method="post">
-                    <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
-                    <input type="hidden" name="quantity" value="<?php if ($product["quantity"]) { echo $product["quantity"] + 1; } else { echo 1; } ?>" />
-                    <input type="submit" value="Add to basket" />
-                </form><h3 class="product_in_basket"><sub><?php if ($product["quantity"]) { ?>In basket<?php } ?></sub></h3>
-            <?php } else {
+            if ($user) {
+                // If the product is in stock
+                if ($product["stock"] > 0) { ?>
+                    <form class="product_add_to_basket" action="basket.php?action=change_item" method="post">
+                        <input type="hidden" name="product_id" value="<?php echo $product["id"]; ?>" />
+                        <input type="hidden" name="quantity" value="<?php if ($product["quantity"]) { echo $product["quantity"] + 1; } else { echo 1; } ?>" />
+                        <input type="submit" value="Add to basket" />
+                    </form><h3 class="product_in_basket"><sub><?php if ($product["quantity"]) { ?>In basket<?php } ?></sub></h3>
+                <?php }
+                } else {
                 echo "<h4 class=\"product_add_to_basket\">Please <a href=\"login.php?next=product.php?id=".$product["id"]."\">login</a> to add this item to your basket</h4>";
             }
         ?>

@@ -154,4 +154,46 @@ function db_set_basket_item($db, $user_id, $product_id, $quantity) {
     }
 }
 
+function db_place_order($db, $user_id, $shipping_cost, $vat, $name, $address1, $address2, $town, $county, $postcode, $phone) {
+    // Since quite a lot is going on, we will need to use MySQL transactions
+    // to make sure if there is a problem, the database doesn't get messed up
+    
+    try {
+        // Begin transaction
+        $db->beginTransaction();
+        
+        // Get basket
+        $basket = db_get_basket_from_user_id($user_id);
+        if (!$basket) {
+            throw new Exception("Basket not found");
+        }
+        
+        // Calculate value
+        $value = 0;
+        foreach ($basket as $basket_item) {
+            $value += $basket_item["quantity"] * $basket_item["price"];
+        }
+        
+        // Create order record
+        $db->query("INSERT INTO shoporder (user_id, value, shipping_cost, vat, name, address1, address2, town, county, postcode, phone) VALUES
+                   ($user_id, $value, $shipping_cost, $vat, \"$name\", \"$address1\", \"$address2\", \"$town\", \"$county\", \"$postcide\", \"$phone\")");
+        
+        // Create order items for each basket item
+        $sql = "INSERT INTO orderitem (order_id, product_id, quantity) VALUES ";
+        foreach ($basket as $basket_item) {
+            $sql += "(LAST_INSERT_ID(), ".$basket_item["product_id"].", ".$basket_item["quantity"]."),";
+        }
+        $db->query($sql);
+        
+        // Remove all products from users basket
+        $db->query("DELETE FROM basketitem WHERE user_id=$user_id");
+        
+        // No errors, commit
+        $db->commit();
+    } catch (Exception $e) {
+        // Rollback
+        $db->rollback();
+    }
+}
+
 ?>

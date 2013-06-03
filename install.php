@@ -56,8 +56,8 @@
                         email_verification_key  varchar(256)  DEFAULT NULL,
                         
                         PRIMARY KEY (id),
-                        UNIQUE KEY email (email),
-                        UNIQUE KEY username (username)
+                        UNIQUE KEY loginname (loginname),
+                        UNIQUE KEY email (email)
                     ) ENGINE = InnoDB;");
         
         // Session table
@@ -78,6 +78,7 @@
                         id          int(11)       NOT NULL  AUTO_INCREMENT,
                         user_id     int(11)       NOT NULL,
                         value       int(11)       NOT NULL,
+                        shipping_cost  int(11)    NOT NULL,
                         vat         float         NOT NULL,
                         name        varchar(256)  NOT NULL  DEFAULT '',
                         address1    varchar(256)  NOT NULL  DEFAULT '',

@@ -13,6 +13,11 @@ a:visited {
 	color: #04f;
 }
 
+table {
+    padding-bottom: 50px;
+    border-spacing: 10px;
+}
+
 #container {
     width: 100%;
     min-width: 350px;
@@ -160,6 +165,14 @@ a:visited {
     font-size: 15px;
 }
 
+.good_text {
+    color: #009900;
+}
+
+.bad_text {
+    color: #FF0000;
+}
+
 
 
 #product_list {
@@ -207,6 +220,12 @@ a:visited {
 	float: left;
 	width: 150px;
 	padding-left: 30px;
+}
+
+.product_stock {
+	float: left;
+	width: 150px;
+	padding-left: 10px;
 }
 
 .productpage_price {
