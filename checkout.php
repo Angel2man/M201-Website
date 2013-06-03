@@ -20,7 +20,7 @@
     if ($user) {
         // If user has items in their basket
         if ($basket) {
-            /
+            
     ?>
     
     

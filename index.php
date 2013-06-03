@@ -108,7 +108,7 @@
 		echo "</ul>";
 		
 		// Show more results link
-		echo "<div id=\"show_more_results\"><a>Show more results</a></div>";
+		echo "<div id=\"show_more_results\"><a href=\"javascript: void(0);\" onclick=\"show_more_results();\">Show more results</a></div>";
 		
 		// Print footer
 		require "includes/footer.php";

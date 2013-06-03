@@ -35,6 +35,9 @@ function print_breadcrumb($bc) {
         <meta charset="UTF-8" />
         <title><?php echo $page["title"]; ?></title>
         <link href="static/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="static/jquery.js"></script>
+        <script type="text/javascript" src="static/purl.js"></script>
+        <script type="text/javascript" src="static/shop.js"></script>
     </head>
     <body>
         <div id="container">
