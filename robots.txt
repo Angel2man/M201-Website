@@ -1,0 +1,4 @@
+# This file will stop the most popular search engines from indexing this site
+
+User-agent: *
+Disallow: /
