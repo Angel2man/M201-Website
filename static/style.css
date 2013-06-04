@@ -173,6 +173,14 @@ table {
     color: #FF0000;
 }
 
+.field_valid {
+    border: 2px solid #33AA33;
+}
+
+.field_invalid {
+    border: 2px solid #FF0000;
+}
+
 
 
 #product_list {

@@ -109,6 +109,13 @@
                 <div class="form_error"><?php if ($phone_error) { echo $phone_error; } ?></div>
             </div>
         </div>
+        <div class="form_row">
+            <div class="form_label">Phone</div>
+            <div class="form_field">
+                <input type="text" name="phone" value="<?php echo $phone; ?>" onkeyup="validate_address_form(this.form);" />
+                <div class="form_error"><?php if ($phone_error) { echo $phone_error; } ?></div>
+            </div>
+        </div>
     </div>
     
     <input type="submit" value="Place Order" />

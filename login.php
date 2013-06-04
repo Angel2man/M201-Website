@@ -51,14 +51,12 @@
 
 <?php require "includes/header.php" ?>
 
-        
 <?php if ($next) { ?>
     <p>You must login to view this page</p>
     <form action="login.php?next=<?php echo $next; ?>" method="post">
 <?php } else { ?>
     <form action="login.php" method="post">
 <?php } ?>
-
 
     <div class="form">
         <?php if ($error) { ?>
