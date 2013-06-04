@@ -85,7 +85,7 @@ function db_get_user_from_username($db, $username, $include_closed) {
 function db_get_user_from_email($db, $email, $include_closed) {
 	// Convert email to lowercase
 	$email = strtolower($email);
-	
+    
 	// Return
 	if ($include_closed) {
 		return db_get_single($db, "SELECT * FROM user WHERE email=\"$email\"");

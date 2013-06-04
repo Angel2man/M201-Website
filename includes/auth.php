@@ -41,12 +41,14 @@ function auth_logout($db, $session_id) {
 
 
 function auth_check_username_exist($db, $username) {
-    return db_get_user_from_username($db, $username, true) != null;
+    // If user was found, return true
+    return !!db_get_user_from_username($db, $username, true);
 }
 
 
 function auth_check_email_exist($db, $email) {
-    return db_get_user_from_username($db, $email, true) != null;
+    // If user was found, return true
+    return !!db_get_user_from_email($db, $email, true);
 }
 
 

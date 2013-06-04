@@ -35,7 +35,7 @@
         }
         
         // Check if email address is already taken
-        if ($email_error == null && auth_check_email_exist($db, $username)) {
+        if ($email_error == null && auth_check_email_exist($db, $email)) {
             $email_error = "This email address is already in use";
         }
         
