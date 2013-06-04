@@ -2,6 +2,10 @@
     // Start session
     session_start();
     
+    // Start output buffering
+    // This allows the app to change HTTP headers at any time
+    ob_start();
+    
     // Includes
     require "db.php";
     require "crypt.php";
