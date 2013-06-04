@@ -66,7 +66,7 @@
         <div class="form_row">
             <div class="form_label">Address 1</div>
             <div class="form_field">
-                <input type="text" name="address1" value="<?php echo $address; ?>" />
+                <input type="text" name="address1" value="<?php echo $address1; ?>" />
                 <div class="form_error"><?php if ($address1_error) { echo $address1_error; } ?></div>
             </div>
         </div>
