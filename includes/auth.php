@@ -1,9 +1,6 @@
 <?php
 
 function auth_get_user_id_from_credentials($db, $username, $password) {
-    // Convert username to lowercase
-    $username = strtolower($username);
-    
     // Check if username is an email and query the database
     $user = null;
     if (strpos($username, "@") != false) {

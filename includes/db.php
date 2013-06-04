@@ -88,9 +88,9 @@ function db_get_user_from_email($db, $email, $include_closed) {
 	
 	// Return
 	if ($include_closed) {
-		return db_get_single($db, "SELECT * FROM user WHERE email=$email");
+		return db_get_single($db, "SELECT * FROM user WHERE email=\"$email\"");
 	} else {
-		return db_get_single($db, "SELECT * FROM user WHERE email=$email AND closed=0");
+		return db_get_single($db, "SELECT * FROM user WHERE email=\"$email\" AND closed=0");
 	}
 }
 

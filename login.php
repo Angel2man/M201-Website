@@ -15,7 +15,8 @@
         $password = $_POST["password"];
         
         // Validate username and password
-        if (validate_username($username) != null || validate_password($password, $password) != null) {
+        // We allow email addresses to be used as usernames
+        if ((validate_username($username) != null && validate_email_address($username) != null) || validate_password($password, $password) != null) {
             $error = true;
         } else {
             // Check credentials
