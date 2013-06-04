@@ -20,6 +20,11 @@
     if ($_SESSION["session_id"]) {
         $user = db_get_user_from_session_id($db, $_SESSION["session_id"]);
         
+        // Make sure the user is logged in
+        if ($user["logged_out"]) {
+            $user = null;
+        }
+        
         // Find users basket
         if ($user) {
             $user["basket"] = db_get_basket_from_user_id($db, $user["id"]);
