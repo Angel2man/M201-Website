@@ -153,4 +153,3 @@ function validate_verification_key($key) {
 }
 
 ?>
-
