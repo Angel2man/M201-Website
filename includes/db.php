@@ -160,39 +160,59 @@ function db_place_order($db, $user_id, $shipping_cost, $vat, $name, $address1, $
     
     try {
         // Begin transaction
-        $db->beginTransaction();
+        $db->autocommit(FALSE);
         
         // Get basket
-        $basket = db_get_basket_from_user_id($user_id);
+        $basket = db_get_basket_from_user_id($db, $user_id);
         if (!$basket) {
-            throw new Exception("Basket not found");
+            return "Basket is empty";
         }
         
-        // Calculate value
+        // Calculate value and check stock
         $value = 0;
         foreach ($basket as $basket_item) {
+            // Increment value
             $value += $basket_item["quantity"] * $basket_item["price"];
+            
+            // Check stock
+            if ($basket_item["quantity"] > $basket_item["stock"]) {
+                return "Not enough stock available for ".$basket_item["name"].". Requested: ".$basket_item["quantity"]." Stock: ".$basket_item["stock"];
+            }
         }
         
         // Create order record
         $db->query("INSERT INTO shoporder (user_id, value, shipping_cost, vat, name, address1, address2, town, county, postcode, phone) VALUES
                    ($user_id, $value, $shipping_cost, $vat, \"$name\", \"$address1\", \"$address2\", \"$town\", \"$county\", \"$postcide\", \"$phone\")");
         
+        // Get order id
+        $order_id = $db->insert_id;
+        
         // Create order items for each basket item
         $sql = "INSERT INTO orderitem (order_id, product_id, quantity) VALUES ";
         foreach ($basket as $basket_item) {
-            $sql += "(LAST_INSERT_ID(), ".$basket_item["product_id"].", ".$basket_item["quantity"]."),";
+            $sql = $sql."($order_id, ".$basket_item["product_id"].", ".$basket_item["quantity"]."),";
         }
         $db->query($sql);
+        
+        // Reduce stock of each item brought
+        foreach ($basket as $basket_item) {
+            $db->query("UPDATE product SET stock=stock-".$basket_item["quantity"]." WHERE id=".$basket_item["product_id"]); 
+        }
         
         // Remove all products from users basket
         $db->query("DELETE FROM basketitem WHERE user_id=$user_id");
         
         // No errors, commit
         $db->commit();
+        
+        // Return order number
+        return $order_id;
     } catch (Exception $e) {
         // Rollback
         $db->rollback();
+        
+        // Return database error
+        return "Database error";
     }
 }
 
