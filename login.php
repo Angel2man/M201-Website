@@ -15,6 +15,7 @@
         $password = $_POST["login_password"];
         
         // Validate username and password
+        // The following commands will detect quotes
         // We allow email addresses to be used as usernames
         if ((validate_username($username) != null && validate_email_address($username) != null) || validate_password($password, $password) != null) {
             $error = true;

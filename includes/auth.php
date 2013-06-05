@@ -20,6 +20,14 @@ function auth_get_user_id_from_credentials($db, $username, $password) {
 
 
 function auth_login($db, $user_id, $ip) {
+    // Check that user_id is numeric
+    if (!is_numeric($user_id)) {
+        return null;
+    }
+    
+    // Add slashes into ip
+    $ip = addslashes($ip);
+    
     // Get current date
     $date = date("Y-m-d H-i-s");
     
@@ -35,24 +43,41 @@ function auth_login($db, $user_id, $ip) {
 
 
 function auth_logout($db, $session_id) {
+    // Check that session_id is numeric
+    if (!is_numeric($session_id)) {
+        return null;
+    }
+    
     // Set logged out flag on session
     $db->query("UPDATE session SET logged_out=1 WHERE id=$session_id");
 }
 
 
 function auth_check_username_exist($db, $username) {
+    // Add slashes into username
+    $username = addslashes($username);
+    
     // If user was found, return true
     return !!db_get_user_from_username($db, $username, true);
 }
 
 
 function auth_check_email_exist($db, $email) {
+    // Add slashes into email
+    $email = addslashes($email);
+    
     // If user was found, return true
     return !!db_get_user_from_email($db, $email, true);
 }
 
 
 function auth_register($db, $username, $email, $password) {
+    // Add slashes into username and email
+    // We will not add slashes into password as that is encrypted before
+    // being put in SQL
+    $username = addslashes($username);
+    $email = addslashes($email);
+    
     // Create loginname
     $loginname = strtolower($username);
     
@@ -81,6 +106,9 @@ function auth_register($db, $username, $email, $password) {
 
 
 function auth_verify_email($db, $key) {
+    // Add slashes into key
+    $key = addslashes($key);
+    
     // Query
     if ($db->query("UPDATE user SET email_verified=1 WHERE email_verification_key=\"$key\"")) {
         // Return true if affected rows is greater than zero
@@ -93,12 +121,25 @@ function auth_verify_email($db, $key) {
 
 
 function auth_resend_verification_email($db, $user_id) {
+    // Check that user_id is numeric
+    if (!is_numeric($user_id)) {
+        return;
+    }
+    
     // Reset verification email sent flag
     $db->query("UPDATE user SET verification_email_sent=0 WHERE id=$user_id");
 }
 
 
 function auth_change_password($db, $user_id, $password) {
+    // Check that user_id is numeric
+    if (!is_numeric($user_id)) {
+        return;
+    }
+    
+    // No slashes will be added into password as it is encrypted before
+    // being put in the SQL query
+    
     // Create a salt
     $password_salt = crypt_new_salt();
     
@@ -111,6 +152,20 @@ function auth_change_password($db, $user_id, $password) {
 
 
 function auth_change_address($db, $user_id, $name, $address1, $address2, $town, $county, $postcode, $phone) {
+    // Check that user_id is numeric
+    if (!is_numeric($user_id)) {
+        return;
+    }
+    
+    // Add slashes into all address fields
+    $name = addslashes($name);
+    $address1 = addslashes($address1);
+    $address2 = addslashes($address2);
+    $town = addslashes($town);
+    $county = addslashes($county);
+    $postcode = addslashes($postcode);
+    $phone = addslashes($phone);
+    
     // Set address
     $db->query("UPDATE user SET
                 name=\"$name\",
@@ -125,6 +180,11 @@ function auth_change_address($db, $user_id, $name, $address1, $address2, $town, 
 
 
 function auth_close_account($db, $user_id) {
+    // Check that user_id is numeric
+    if (!is_numeric($user_id)) {
+        return;
+    }
+    
     // Set account closed flag
     $db->query("UPDATE user SET closed=1 WHERE id=$user_id");
 }
