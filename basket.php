@@ -60,18 +60,13 @@
                     
                     // If theres a validation error, print out checkout page
                     if ($address_invalid) {
+                        // Tell checkout that it shouldnt get address from user
+                        $ignore_user_address = true;
+                        
+                        // Print checkout page
                         require "includes/basket/checkout.php";
                     }
                 } else {
-                    // Get address
-                    $name = $user["name"];
-                    $address1 = $user["address1"];
-                    $address2 = $user["address2"];
-                    $town = $user["town"];
-                    $county = $user["county"];
-                    $postcode = $user["postcode"];
-                    $phone = $user["phone"];
-                    
                     // Print checkout page
                     require "includes/basket/checkout.php";
                 }

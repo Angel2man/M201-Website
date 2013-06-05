@@ -1,3 +1,16 @@
+<?php
+    // Get user address
+    if (!$ignore_user_address) {
+        $name = $user["name"];
+        $address1 = $user["address1"];
+        $address2 = $user["address2"];
+        $town = $user["town"];
+        $county = $user["county"];
+        $postcode = $user["postcode"];
+        $phone = $user["phone"];
+    }
+?>
+
 <table>
     <thead>
        <tr>
