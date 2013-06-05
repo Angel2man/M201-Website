@@ -22,7 +22,7 @@ function auth_get_user_id_from_credentials($db, $username, $password) {
 function auth_login($db, $user_id, $ip) {
     // Get current date
     $date = date("Y-m-d H-i-s");
-   
+    
     // Create a new session
     if($db->query("INSERT INTO session (user_id, login_time, ip) VALUES ($user_id, \"$date\", \"$ip\")")) {
         // Return new session ID

@@ -8,6 +8,9 @@
         forward("login.php?next=basket.php", null);
     }
     
+    // Set page variables
+    $page["title"] = "Basket";
+    
     // Check for users basket if were not changing it
     if (!$user["basket"] && $_GET["action"] != "change_item") {
         // Print error
@@ -16,9 +19,6 @@
         require "includes/footer.php";
         die();
     }
-    
-    // Set page variables
-    $page["title"] = "Basket";
     
     // Check if were changing a basket item
     if ($_GET["action"] == "change_item") {
