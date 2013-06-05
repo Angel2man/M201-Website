@@ -110,6 +110,16 @@ function db_get_user_from_session_id($db, $session_id) {
     return db_get_single($db, "SELECT * FROM session, user WHERE session.id=$session_id AND session.user_id=user.id");
 }
 
+function db_get_user_from_id($db, $user_id) {
+    // Check that user_id is numeric
+    if (!is_numeric($user_id)) {
+        return null;
+    }
+    
+    // Query
+    return db_get_single($db, "SELECT * FROM user WHERE id=$user_id");
+}
+
 function db_get_category_list($db) {
     return db_get_array($db, "SELECT * FROM category ORDER BY position");
 }

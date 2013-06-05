@@ -20,6 +20,9 @@
     <h3>Your email has not been verified yet</h3>
     <p>You should have recieved an email to &quot;<?php echo $user["email"]; ?>&quot; containing a link to verify your email address</p>
     
+    <p><span style="font-weight: bold;">NOTE:</span> I didn't have time to implement the email feature (I was hoping to do it in a cron job). Heres the verification link thats meant to appear in that email<br />
+    <a href="verify_email.php?key=<?php echo $user["email_verification_key"]; ?>">verify_email.php?key=<?php echo $user["email_verification_key"]; ?></a></p>
+    
     <hr />
     
     <p>If you cannot click the link, please copy the activation code provided in the email into the box below</p>

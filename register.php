@@ -16,6 +16,9 @@
     $email_error = null;
     $password_error = null;
     
+    // User
+    $user = null;
+    
     // Check if were registering a new user
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get field values
@@ -42,7 +45,10 @@
         // If there are no errors, continue with registration
         if($username_error == null && $email_error == null && $password_error == null) {
             // Register
-            auth_register($db, $username, $email, $password1);
+            $user_id = auth_register($db, $username, $email, $password1);
+            
+            // Get user
+            $user = db_get_user_from_id($db, $user_id);
             
             // Set successful flag
             $successful = true;
@@ -65,6 +71,12 @@
 
     <h3>Thank you for registering!</h3>
     <p>An activation link has been emailed to you and should arrive shortly</p>
+    
+    <?php if ($user) { ?>
+        <p><span style="font-weight: bold;">NOTE:</span> I didn't have time to implement the email feature (I was hoping to do it in a cron job). Heres the verification link thats meant to appear in that email<br />
+        <a href="verify_email.php?key=<?php echo $user["email_verification_key"]; ?>">verify_email.php?key=<?php echo $user["email_verification_key"]; ?></a></p>
+    <?php } ?>
+    
     <p>You can now login but you cannot place an order until your email has been verified</p>
     
     <h3><a href="login.php">Click here to login</a></h3>
