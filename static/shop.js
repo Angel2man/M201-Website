@@ -207,10 +207,6 @@ $(document).ready(function() {
     });
     
     // Password fields
-    $("input[name='password']").on("input", function(event) {
-        var field = event.target;
-        set_field_valid_indicator(field, validate_password1(field.value));
-    });
     $("input[name='password1']").on("input", function(event) {
         var field = event.target;
         set_field_valid_indicator(field, validate_password1(field.value));

@@ -11,8 +11,8 @@
     // Check if the user is logging in
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get username and password
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+        $username = $_POST["login_username"];
+        $password = $_POST["login_password"];
         
         // Validate username and password
         // We allow email addresses to be used as usernames
@@ -65,11 +65,11 @@
         
         <div class="form_row">
             <div class="form_label">Username</div>
-            <div class="form_field"><input type="text" name="username" /></div>
+            <div class="form_field"><input type="text" name="login_username" /></div>
         </div>
         <div class="form_row">
             <div class="form_label">Password</div>
-            <div class="form_field"><input type="password" name="password" /></div>
+            <div class="form_field"><input type="password" name="login_password" /></div>
         </div>
         <div class="form_row">
             <input type="submit" value="Login" /> <a href="register.php">Register</a>
