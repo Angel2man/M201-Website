@@ -11,9 +11,6 @@
         $product = db_get_product_from_id($db, $product_id, $user["id"]);
     }
     
-    // Initialise error flag
-    $error = false;
-    
     // Check if product exists
     if ($product) {
         // Breadcrumb
@@ -27,9 +24,6 @@
     } else { // Error
         // Title
         $page["title"] = "Couldn't find product";;
-        
-        // Set error flag
-        $error = true;
     }
     
     
@@ -40,7 +34,7 @@
     require "includes/header.php";
     
     // Check for error
-    if ($error) {
+    if (!$product) {
         // Print error message
         echo "<p><a href=\"index.php\">Click here</a> to go back to the product page</p>";
     } else {
