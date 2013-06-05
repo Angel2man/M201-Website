@@ -15,9 +15,9 @@
     if (!$user) {
         // Forward user to login page with next parameter set to this page
         if ($action) {
-            header("Location: login.php?next=account.php%3Faction%3D".$action);
+            forward("login.php?next=account.php%3Faction%3D".$action, null);
         } else {
-            header("Location: login.php?next=account.php");
+            forward("login.php?next=account.php", null);
         }
     }
     
