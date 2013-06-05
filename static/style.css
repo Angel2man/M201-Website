@@ -5,12 +5,12 @@ body {
 }
 
 a:link {
-	color: #04F;
-	text-decoration: none;
+    color: #04F;
+    text-decoration: none;
 }
 
 a:visited {
-	color: #04f;
+    color: #04f;
 }
 
 table {
@@ -19,9 +19,9 @@ table {
 }
 
 #container {
-    width: 100%;
-    min-width: 350px;
-    min-height: 500px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #header h1 {
@@ -40,28 +40,35 @@ table {
 }
 
 #nav {
-	background-color: #333;
+    background-color: #333;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (max-width: 900px) {
     #container {
-        width: 900px;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
+        min-width: 350px;
+        min-height: 500px;
+        margin: 0;
     }
     
     #nav {
-		-webkit-border-top-left-radius: 10px;
-		-webkit-border-top-right-radius: 10px;
-		-moz-border-radius-topleft: 10px;
-		-moz-border-radius-topright: 10px;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
-	}
+        -webkit-border-top-left-radius: 0px;
+        -webkit-border-top-right-radius: 0px;
+        -moz-border-radius-topleft: 0px;
+        -moz-border-radius-topright: 0px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
 }
 
 #nav a:link, #nav a:visited {
-	color: #FFF;
+    color: #FFF;
 }
 
 #nav ul {
@@ -80,7 +87,7 @@ table {
 }
 
 #userlinks {
-	float: right;
+    float: right;
 }
 
 #user_info {
@@ -91,7 +98,7 @@ table {
 }
 
 #user_info h4 {
-	margin: 0;
+    margin: 0;
 }
 
 #content {
@@ -101,9 +108,9 @@ table {
 
 @media screen and (min-width: 900px) {
     #content {
-		border-left: 2px solid #CCC;
-		border-right: 2px solid #CCC;
-		border-bottom: 2px solid #CCC;
+        border-left: 2px solid #CCC;
+        border-right: 2px solid #CCC;
+        border-bottom: 2px solid #CCC;
     }
 }
 
@@ -119,16 +126,16 @@ table {
 }
 
 #content_inner {
-	padding-left: 10px;
-	padding-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #messagebox {
-	color: #FFF;
-	background-color: #33AA33;
-	padding: 5px;
-	font-weight: bold;
-	text-align: center;
+    color: #FFF;
+    background-color: #33AA33;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
 }
 
 #breadcrumb {
@@ -184,81 +191,81 @@ table {
 
 
 #product_list {
-	list-style-type: none;
-	padding-left: 10px;
-	margin: 0;
+    list-style-type: none;
+    padding-left: 10px;
+    margin: 0;
 }
 
 #product_list li {
-	padding-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 .product_image {
-	float: left;
-	width: 100px;
-	height: 100px;
-	margin: 0;
-	padding: 0;
-	text-align: right;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    text-align: right;
 }
 
 .product_image img {
-	max-width: 100px;
-	max-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .productpage_image img {
-	float: left;
+    float: left;
     padding-right: 10px;
-	max-width: 200px;
-	max-height: 200px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 .product_name {
-	font-weight: normal;
-	padding-left: 120px;
+    font-weight: normal;
+    padding-left: 120px;
 }
 
 .product_summary {
-	margin-top: 0px;
-	padding-left: 130px;
+    margin-top: 0px;
+    padding-left: 130px;
 }
 
 .product_price {
-	float: left;
-	width: 150px;
-	padding-left: 30px;
+    float: left;
+    width: 150px;
+    padding-left: 30px;
 }
 
 .product_stock {
-	float: left;
-	width: 150px;
-	padding-left: 10px;
+    float: left;
+    width: 150px;
+    padding-left: 10px;
 }
 
 .productpage_price {
-	padding-left: 130px;
+    padding-left: 130px;
     font-size: 23px;
 }
 
 .product_price sub, .productpage_price sub {
-	text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 .product_in_basket {
-	color: #009900;
+    color: #009900;
 }
 
 .product_add_to_basket {
-	margin-top: 0px;
-	padding-left: 130px;
+    margin-top: 0px;
+    padding-left: 130px;
 }
 
 
 #show_more_results {
-	text-align: center;
-	padding-bottom: 20px;
-	font-size: 18px;
-	font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
