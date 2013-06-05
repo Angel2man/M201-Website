@@ -168,7 +168,6 @@
 
 <p>Click the button below to load some sample data</p>
 <p>Please make sure that the database is installed first. If not, <a href="install.php">click here</a>.</p>
-<p>The password is: foobar123</p>
 <br /><br />
 
 <?php if ($pw_error) { ?>

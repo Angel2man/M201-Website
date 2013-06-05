@@ -143,7 +143,6 @@
 <p>Click the button below to install a fresh new database</p>
 <p>This will delete any data already in the database</p>
 <p>To change database settings, look in includes/db.php</p>
-<p>The password is: foobar123</p>
 <br /><br />
 
 <?php if ($pw_error) { ?>
