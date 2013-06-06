@@ -25,9 +25,9 @@ function db_connect() {
 }
 
 function db_get_single($db, $sql) {
-	// Run query
-	$result = $db->query($sql." LIMIT 1");
-	
+    // Run query
+    $result = $db->query($sql." LIMIT 1");
+    
     // Check that result is not null
     if ($result == null) {
         return null;
@@ -74,30 +74,30 @@ function db_get_user_from_username($db, $username, $include_closed) {
     // Add slashes into username
     $username = addslashes($username);
     
-	// Convert username to lowercase
-	$username = strtolower($username);
-	
-	// Return
-	if ($include_closed) {
-		return db_get_single($db, "SELECT * FROM user WHERE loginname=\"$username\"");
-	} else {
-		return db_get_single($db, "SELECT * FROM user WHERE loginname=\"$username\" AND closed=0");
-	}
+    // Convert username to lowercase
+    $username = strtolower($username);
+    
+    // Return
+    if ($include_closed) {
+        return db_get_single($db, "SELECT * FROM user WHERE loginname=\"$username\"");
+    } else {
+        return db_get_single($db, "SELECT * FROM user WHERE loginname=\"$username\" AND closed=0");
+    }
 }
 
 function db_get_user_from_email($db, $email, $include_closed) {
     // Add slashes into email
     $email = addslashes($email);
     
-	// Convert email to lowercase
-	$email = strtolower($email);
+    // Convert email to lowercase
+    $email = strtolower($email);
     
-	// Return
-	if ($include_closed) {
-		return db_get_single($db, "SELECT * FROM user WHERE email=\"$email\"");
-	} else {
-		return db_get_single($db, "SELECT * FROM user WHERE email=\"$email\" AND closed=0");
-	}
+    // Return
+    if ($include_closed) {
+        return db_get_single($db, "SELECT * FROM user WHERE email=\"$email\"");
+    } else {
+        return db_get_single($db, "SELECT * FROM user WHERE email=\"$email\" AND closed=0");
+    }
 }
 
 function db_get_user_from_session_id($db, $session_id) {
@@ -169,9 +169,9 @@ function db_get_product_from_id($db, $product_id, $user_id) {
     // If user was provided, look for basket item as well
     $sql = null;
     if ($user_id && is_numeric($user_id)) {
-    	$sql = "SELECT * FROM product LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id WHERE product.id=$product_id";
+        $sql = "SELECT * FROM product LEFT JOIN basketitem ON basketitem.product_id=product.id AND basketitem.user_id=$user_id WHERE product.id=$product_id";
     } else {
-    	$sql = "SELECT * FROM product WHERE id=$product_id";
+        $sql = "SELECT * FROM product WHERE id=$product_id";
     }
     
     // Return

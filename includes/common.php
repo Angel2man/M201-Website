@@ -32,25 +32,25 @@
     }
     
     function forward($to, $message) {
-		// Set message
-		if ($message) {
-			$_SESSION["message"] = $message;
-		}
-		
-		// Forward
-		header("Location: ".$to);
-		
-		// Die
-		die("<p>Forwarding to <a href=\"$to\">$to</a></p>");
-	}
-	
-	function print_price($current, $usual) {
-		// Print current price
-		echo money_format("£%i", $current / 100);
-		
-		// If usual price is different, print that as well
-		if ($current != $usual) {
-			echo " <sub>".money_format("£%i", $usual / 100)."</sub> ";
-		}
-	}
+        // Set message
+        if ($message) {
+            $_SESSION["message"] = $message;
+        }
+        
+        // Forward
+        header("Location: ".$to);
+        
+        // Die
+        die("<p>Forwarding to <a href=\"$to\">$to</a></p>");
+    }
+    
+    function print_price($current, $usual) {
+        // Print current price
+        echo money_format("£%i", $current / 100);
+        
+        // If usual price is different, print that as well
+        if ($current != $usual) {
+            echo " <sub>".money_format("£%i", $usual / 100)."</sub> ";
+        }
+    }
 ?>

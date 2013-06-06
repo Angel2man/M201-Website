@@ -24,8 +24,8 @@
     // Get category
     $category = null;
     if ($category_id) {
-		$category = db_get_category_from_id($db, $category_id);
-	}
+        $category = db_get_category_from_id($db, $category_id);
+    }
     
     // Products per page
     $products_per_page = 5;
@@ -35,23 +35,23 @@
     
     // If were printing the layout
     if ($print_layout) {
-		// Set page variables
-		if ($category ) {
-			$page["title"] = $category["name"];
-		} else {
-			$page["title"] = "All Products";
-		}
-		
-		// Print header
-		require "includes/header.php";
-		
-		// Start list
-		echo "<ul id=\"product_list\">";
-		
-	}
-	
-	// Loop through products
-	foreach ($products as $product) {
+        // Set page variables
+        if ($category ) {
+            $page["title"] = $category["name"];
+        } else {
+            $page["title"] = "All Products";
+        }
+        
+        // Print header
+        require "includes/header.php";
+        
+        // Start list
+        echo "<ul id=\"product_list\">";
+        
+    }
+    
+    // Loop through products
+    foreach ($products as $product) {
         ?>
             <li>
                 <div  class="product_image">
@@ -100,17 +100,17 @@
                 <div style="clear: left;"></div>
             </li>
         <?php
-	}
-	
-	// If were printing the layout
-	if ($print_layout) {
-		// End list
-		echo "</ul>";
-		
-		// Show more results link
-		echo "<div id=\"show_more_results\"><a href=\"javascript: void(0);\" onclick=\"show_more_results();\">Show more results</a></div>";
-		
-		// Print footer
-		require "includes/footer.php";
-	}
+    }
+    
+    // If were printing the layout
+    if ($print_layout) {
+        // End list
+        echo "</ul>";
+        
+        // Show more results link
+        echo "<div id=\"show_more_results\"><a href=\"javascript: void(0);\" onclick=\"show_more_results();\">Show more results</a></div>";
+        
+        // Print footer
+        require "includes/footer.php";
+    }
 ?>

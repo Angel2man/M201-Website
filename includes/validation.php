@@ -146,7 +146,7 @@ function validate_address_phone_number($phone_number, $required) {
 }
 
 function validate_verification_key($key) {
-	// Verification key must be 32 characters hexadecimal
+    // Verification key must be 32 characters hexadecimal
     if (!preg_match("/^[0-9a-f]{32}$/", $key)) {
         return "Verification key is invalid";
     }

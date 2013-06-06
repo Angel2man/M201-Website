@@ -55,29 +55,29 @@ function print_breadcrumb($bc) {
                         
                         // Print out each category in list
                         foreach ($category_list as $category_list_item) {
-							echo "<li><a href=\"index.php?cat=".$category_list_item["id"]."\">".$category_list_item["name"]."</a></li>";
-						}
-					?>
+                            echo "<li><a href=\"index.php?cat=".$category_list_item["id"]."\">".$category_list_item["name"]."</a></li>";
+                        }
+                    ?>
                 </ul>
                 
-				<?php if ($user) { // If user is logged in, display user links ?>
-				    <ul id="userlinks">
-						<li><a href="basket.php">My Basket</a></li>
-						<li><a href="basket.php?action=checkout">Checkout</a></li>
-					</ul>
-				<?php } ?>
-				
+                <?php if ($user) { // If user is logged in, display user links ?>
+                    <ul id="userlinks">
+                        <li><a href="basket.php">My Basket</a></li>
+                        <li><a href="basket.php?action=checkout">Checkout</a></li>
+                    </ul>
+                <?php } ?>
+                
                 <div style="clear: both;"></div>
             </div>
             
-			<?php if ($_SESSION["message"]) { ?>
-				<div id="messagebox">
-					<?php 
-						echo $_SESSION["message"];
-						$_SESSION["message"] = "";
-					?>
-				</div>
-			<?php } ?>
+            <?php if ($_SESSION["message"]) { ?>
+                <div id="messagebox">
+                    <?php 
+                        echo $_SESSION["message"];
+                        $_SESSION["message"] = "";
+                    ?>
+                </div>
+            <?php } ?>
             
             <div id="user_info">
                 <?php if($user) { ?>

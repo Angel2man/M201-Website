@@ -5,17 +5,17 @@
         
         $db->query("INSERT INTO product (name, summary, description, image, category_id, usual_price, price, stock) VALUES
                     (\"$name\", \"$summary\", \"$description\", \"$image\", $category_id, $usual_price, $price, $stock)");
-	}
+    }
     
     function add_category($db, $name, $position) {
         // Create a new category
-		if($db->query("INSERT INTO category (name, position) VALUES (\"$name\", $position)")) {
-			// Return new category ID
-			return $db->insert_id;
-		} else {
-			// Return null
-			return null;
-		}
+        if($db->query("INSERT INTO category (name, position) VALUES (\"$name\", $position)")) {
+            // Return new category ID
+            return $db->insert_id;
+        } else {
+            // Return null
+            return null;
+        }
     }
     
     function load_sample_data($db) {
@@ -67,7 +67,7 @@
                          "experience-hendrix.jpg",
                          $music_category, 1000, 1000);
                          
-		add_product($db, "Halo: Combat Evolved",
+        add_product($db, "Halo: Combat Evolved",
                          "Xbox",
                          "",
                          "halo-combat-evolved.jpg",
